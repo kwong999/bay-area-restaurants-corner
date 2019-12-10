@@ -1,6 +1,6 @@
 {
   "name": "Project01",
-  "private": false,
+  "private": true,
   "engines": {
     "node": "12.11.1",
     "npm": "6.11.3"
