@@ -9,6 +9,6 @@
 User.delete_all
 
 u1 = User.create!({
-  username: "Test001",
-  password: "Test001"
+  username: ENV['DB_SEED_U1'],
+  password: ENV['DB_SEED_P1']
 })

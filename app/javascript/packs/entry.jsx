@@ -1,11 +1,18 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Root from '../frontend/components/root'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from '../frontend/components/root';
+import configureStore from '../frontend/store/store';
+import { login, signup, logout } from '../frontend/actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<Root />, document.getElementById('root'))
-})
+  let store;
+  store = configureStore();
+  //TEST START
+  window.login = login;
+  window.signup = signup;
+  window.logout = logout;
+  window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  //TEST END
+  ReactDOM.render(<Root store={store}/>, document.getElementById('root'))
+});
