@@ -18,11 +18,11 @@ class BusinessShow extends React.Component {
     if (!!this.props.business) {
       console.log(this.props.business);
       const { business } = this.props;
-      const address = (business.address_first) ? `
-          ${business.address_first} ${business.address_second},
-          ${business.street},
-          ${business.city}, 
-          ${business.state} ${business.zip}` : 'Not Provided';
+      const address = (business.address.address_first) ? `
+          ${business.address.address_first} ${business.address.address_second},
+          ${business.address.street},
+          ${business.address.city}, 
+          ${business.address.state} ${business.address.zip}` : 'Not Provided';
       return (
         <div className='business-single'>
           <Link to=''>Go Back</Link>
