@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_180315) do
+ActiveRecord::Schema.define(version: 2019_12_11_023146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "business_id", null: false
+    t.string "address_first"
+    t.string "address_second"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_addresses_on_business_id", unique: true
+  end
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_businesses_on_name", unique: true
+  end
+
+  create_table "hours", force: :cascade do |t|
+    t.integer "business_id", null: false
+    t.string "hours_mon"
+    t.string "hours_tue"
+    t.string "hours_wed"
+    t.string "hours_thu"
+    t.string "hours_fri"
+    t.string "hours_sat"
+    t.string "hours_sun"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_hours_on_business_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
