@@ -7,6 +7,18 @@ class User < ApplicationRecord
   
   after_initialize :ensure_session_token
 
+  has_many :comments,
+    class_name: :Comment,
+    primary_key: :id,
+    foreign_key: :user_id,
+    dependent: :destroy
+    
+  has_many :rates,
+    class_name: :Rate,
+    primary_key: :id,
+    foreign_key: :user_id,
+    dependent: :destroy
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

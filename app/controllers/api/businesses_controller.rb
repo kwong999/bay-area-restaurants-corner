@@ -1,6 +1,6 @@
 class Api::BusinessesController < ApplicationController
   def index
-    @businesses = Business.includes(:address, :hour).all
+    @businesses = Business.includes(:comments).all
     render 'api/businesses/index'
   end
 
@@ -24,9 +24,10 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.includes(:address, :hour).find(params[:id])
+    @business = Business.includes(:address, :hour, :comments).find(params[:id])
     @address = @business.address
     @hour = @business.hour
+    @comments = @business.comments.includes(:user)
     render 'api/businesses/show'
   end
 

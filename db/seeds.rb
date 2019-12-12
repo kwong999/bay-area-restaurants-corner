@@ -10,10 +10,27 @@ User.delete_all
 Business.delete_all
 Address.delete_all
 Hour.delete_all
+Comment.delete_all
+Rate.delete_all
 
 u1 = User.create!({
   username: ENV['DB_SEED_U1'],
   password: ENV['DB_SEED_P1']
+})
+
+u2 = User.create!({
+  username: ENV['DB_SEED_U2'],
+  password: ENV['DB_SEED_P2']
+})
+
+u3 = User.create!({
+  username: ENV['DB_SEED_U3'],
+  password: ENV['DB_SEED_P3']
+})
+
+u4 = User.create!({
+  username: ENV['DB_SEED_U4'],
+  password: ENV['DB_SEED_P4']
 })
 
 b1 = Business.create!({
@@ -59,8 +76,8 @@ a2 = Address.create!({
   city: "Hayward",
   state: "CA",
   zip: "94545",
-  lat: 37.644000,
-  lng: -122.104304
+  lat: 37.644003,
+  lng: -122.104355
 })
 
 h2 = Hour.create!({
@@ -88,8 +105,8 @@ a3 = Address.create!({
   city: "Hayward",
   state: "CA",
   zip: "94545",
-  lat: 37.647834,
-  lng: -122.106583
+  lat: 37.647824,
+  lng:  -122.106584
 })
 
 h3 = Hour.create!({
@@ -98,7 +115,56 @@ h3 = Hour.create!({
   hours_tue: "1100-2200",
   hours_wed: "1100-2200",
   hours_thu: "1100-2200",
-  hours_fri: "1100-2200",
-  hours_sat: "1100-2200",
+  hours_fri: "1100-2300",
+  hours_sat: "1100-2300",
   hours_sun: "1100-2200"
 })
+
+c1 = Comment.create!({
+  user_id: u2.id,
+  business_id: b1.id,
+  body: 'Pretty Good'
+})
+
+r1 = Rate.create!({
+  user_id: u2.id,
+  business_id: b1.id,
+  rating: 3.0
+})
+
+c2 = Comment.create!({
+  user_id: u2.id,
+  business_id: b2.id,
+  body: 'A bit expensive'
+})
+
+r2 = Rate.create!({
+  user_id: u2.id,
+  business_id: b2.id,
+  rating: 2.5
+})
+
+c3 = Comment.create!({
+  user_id: u3.id,
+  business_id: b1.id,
+  body: 'Better than I expect'
+})
+
+r3 = Rate.create!({
+  user_id: u3.id,
+  business_id: b1.id,
+  rating: 4.0
+})
+
+c4 = Comment.create!({
+  user_id: u3.id,
+  business_id: b2.id,
+  body: 'Excellent'
+})
+
+r4 = Rate.create!({
+  user_id: u3.id,
+  business_id: b2.id,
+  rating: 5.0
+})
+

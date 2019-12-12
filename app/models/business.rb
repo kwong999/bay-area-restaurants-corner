@@ -12,4 +12,16 @@ class Business < ApplicationRecord
     primary_key: :id,
     foreign_key: :business_id,
     dependent: :destroy
+
+  has_many :comments,
+    class_name: :Comment,
+    primary_key: :id,
+    foreign_key: :business_id,
+    dependent: :destroy
+    
+  has_many :rates,
+    class_name: :Rate,
+    primary_key: :id,
+    foreign_key: :business_id,
+    dependent: :destroy
 end

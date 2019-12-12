@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class BusinessIndex extends React.Component {
   componentDidMount() {
@@ -15,13 +15,14 @@ class BusinessIndex extends React.Component {
             <li>Name:<Link to={`/business/${business.id}`} > {business.name}</Link></li>
             <li>Description: {business.description}</li>
             <li>Phone: {business.phone}</li>
+            <li>{business.commentIds.length} {(business.commentIds.length > 1) ? 'reviews' : 'review'}</li>
           </ul>
         </li>
       ))
     }
   }
   render() {
-    console.log(this.props.businesses);
+    if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business-index'>
         <h3>Restaurants you might interested in.</h3>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_074036) do
+ActiveRecord::Schema.define(version: 2019_12_11_170612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 2019_12_11_074036) do
     t.index ["name"], name: "index_businesses_on_name"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "business_id", null: false
+    t.string "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_comments_on_business_id"
+    t.index ["user_id", "business_id"], name: "index_comments_on_user_id_and_business_id", unique: true
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "hours", force: :cascade do |t|
     t.integer "business_id", null: false
     t.string "hours_mon"
@@ -51,6 +62,17 @@ ActiveRecord::Schema.define(version: 2019_12_11_074036) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_hours_on_business_id", unique: true
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "business_id", null: false
+    t.float "rating", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_rates_on_business_id"
+    t.index ["user_id", "business_id"], name: "index_rates_on_user_id_and_business_id", unique: true
+    t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
