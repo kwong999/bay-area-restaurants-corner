@@ -10,4 +10,10 @@ class Comment < ApplicationRecord
     class_name: :Business,
     primary_key: :id,
     foreign_key: :business_id
+
+  has_many :votes,
+    class_name: :Vote,
+    primary_key: :id,
+    foreign_key: :comment_id,
+    dependent: :destroy
 end

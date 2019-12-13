@@ -29,10 +29,16 @@ class Api::BusinessesController < ApplicationController
     @business = Business.includes(:address, :hour, :comments, :rates).find(params[:id])
     if (current_user)
       @current_user_rating = Rate.where("business_id = ? AND user_id = ?", params[:id], current_user.id).first
+      @current_user_votes = Vote.where(comment_id: @business.comment_ids).where(user_id: current_user.id)
     end
     @address = @business.address
     @hour = @business.hour
-    @comments = @business.comments.includes(:user)
+    @comments = @business.comments.includes(:user, :votes)
+    @comments_vote_cal = Comment
+      .select("comment_id AS id, SUM(votes.voting), COUNT(votes.voting)")
+      .joins(:votes)
+      .group(:comment_id)
+      .where(business_id: params[:id]).to_a
     @rating = @business.rates
     @rating_scores = @rating.average(:rating)
     @rating_counts = @rating.count(:rating)

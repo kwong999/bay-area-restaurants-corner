@@ -14,7 +14,7 @@ const ratesReducer = (state = {}, action) => {
     case RECEIVE_BUSINESS:
       return Object.assign({}, action.payload.rates)
     case RECEIVE_RATE:
-      return Object.assign({}, { [action.rate.id]: action.rate })
+      return Object.assign({}, { [action.rate.user_id]: action.rate })
     default:
       return state;
   }

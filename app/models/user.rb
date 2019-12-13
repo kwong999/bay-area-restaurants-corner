@@ -19,6 +19,12 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     dependent: :destroy
 
+  has_many :votes,
+    class_name: :Vote,
+    primary_key: :id,
+    foreign_key: :user_id,
+    dependent: :destroy
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

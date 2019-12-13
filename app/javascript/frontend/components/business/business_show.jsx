@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CommentFormContainer from '../comment/comment_form_container';
 import RateSelectorContainer from '../rate/rate_selector_container';
+import VoteLineContainer from '../vote/vote_line_container';
 
 class BusinessShow extends React.Component {
   constructor(props) {
@@ -132,18 +133,56 @@ class BusinessShow extends React.Component {
   }
 
   renderComments(commentIds, comments) {
-    if (!!commentIds && !!comments){
-      return commentIds.map( (id, idx) => {
-        if (comments[parseInt(id)].body) {
-          return <li key={idx}>{comments[parseInt(id)].body} by {comments[parseInt(id)].username}</li>
+    if (!commentIds || !comments) return null;
+    return commentIds.map((id, idx) => {
+      const comment = comments[parseInt(id)];
+      const votingResult = comment.voting.voting_result;
+      const votingCounts = comment.voting.voting_counts;
+      let voteLine;
+      if (votingCounts === 0) {
+        voteLine = 'No votes';
+      } else {
+        if (votingResult === 0) {
+          voteLine = `Even by ${votingCounts} votes`
+        } else if ( votingResult > 0 ) {
+          voteLine = `Net ${votingResult} upvotes by ${votingCounts} votes`
+        } else {
+          voteLine = `Net ${votingResult} downvotes by ${votingCounts} votes`
         }
       }
+      return (
+        <li key={idx}>  
+          <p>{comment.body} by {comment.username}</p>
+          <p>{voteLine}</p>
+          {this.renderVoteOptions(parseInt(id))}
+        </li>
       );
-    } else {
-      return null;
-    }
+    })
   }
 
+  renderVoteOptions(commentId){
+    if (!this.props.currentUserId) return null;
+    const vote = this.props.votes[this.props.currentUserId][commentId]
+    let action;
+    if (!vote) {
+      action = 'Vote';
+    } else {
+      if (vote.voting === 1) {
+        action = 'Upvoted';
+      } else {
+        action = 'Downoted';
+      }
+    }
+    return (
+      <VoteLineContainer
+        vote={vote}
+        user_id={this.props.currentUserId}
+        business_id={this.props.business.id}
+        comment_id={commentId}
+        action={action}
+      />
+    )
+  }
   render() {
     if (this.props.ui.loadingBusiness) return null;
     if (!this.props.business) return null;

@@ -15,13 +15,28 @@ json.comments do
     json.set! comment.id do
       json.extract! comment, :id, :body, :user_id, :business_id
       json.extract! comment.user, :username
+      json.voting do
+        json.voting_result comment.votes.sum(:voting)
+        json.voting_counts comment.votes.count(:voting)
+      end
     end
   end
 end
 json.rates do
   if (current_user && @current_user_rating)
     json.set! current_user.id do
-      json.extract! @current_user_rating, :id, :business_id, :rating
+      json.extract! @current_user_rating, :id, :user_id, :business_id, :rating
+    end
+  end
+end
+json.votes do
+  if (current_user && @current_user_votes.length > 0)
+    json.set! current_user.id do
+      @current_user_votes.each do |vote|
+        json.set! vote.comment_id do
+          json.extract! vote, :id, :user_id, :comment_id, :voting
+        end
+      end
     end
   end
 end

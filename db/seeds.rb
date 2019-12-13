@@ -168,3 +168,26 @@ r4 = Rate.create!({
   rating: 5.0
 })
 
+v1 = Vote.create!({
+  user_id: u2.id,
+  comment_id: c1.id,
+  voting: 1
+})
+
+v2 = Vote.create!({
+  user_id: u2.id,
+  comment_id: c4.id,
+  voting: -1
+})
+
+v3 = Vote.create!({
+  user_id: u3.id,
+  comment_id: c1.id,
+  voting: 1
+})
+
+v4 = Vote.create!({
+  user_id: u3.id,
+  comment_id: c4.id,
+  voting: 1
+})
