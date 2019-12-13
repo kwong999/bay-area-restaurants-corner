@@ -90,7 +90,7 @@ class CommentForm extends React.Component {
   renderView() {
     return (
       <div className='comment-form'>
-        <p>Your comment:</p>
+        <p>Your rate:</p>
         <p>{this.state.body}</p>
         <button onClick={this.handleCommentEdit}>Edit</button>
         <button onClick={this.handleCommentDelete}>Delete</button>
@@ -108,6 +108,7 @@ class CommentForm extends React.Component {
         return this.renderView();
     }
   }
+
   render() {
     return(
       this.handleRender()

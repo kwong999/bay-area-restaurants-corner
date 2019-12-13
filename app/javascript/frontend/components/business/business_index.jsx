@@ -9,16 +9,26 @@ class BusinessIndex extends React.Component {
   renderBusinessList() {
     const businessList = Object.keys(this.props.businesses).map( key => this.props.businesses[key]);
     if (businessList) {
-      return businessList.map( (business, idx) => (
-        <li key={`business-${business.id}`}>
-          <ul className='business-short-detail'>
-            <li>Name:<Link to={`/business/${business.id}`} > {business.name}</Link></li>
-            <li>Description: {business.description}</li>
-            <li>Phone: {business.phone}</li>
-            <li>{business.commentIds.length} {(business.commentIds.length > 1) ? 'reviews' : 'review'}</li>
-          </ul>
-        </li>
-      ))
+      return businessList.map( (business, idx) => {
+        let rating = '-';
+        if (business.rating.rating_avg !== '-') {
+          rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
+          if (business.rating.rating_counts > 1) {
+            rating = rating + 's';
+          }
+        }
+        return (
+          <li key={`business-${business.id}`}>
+            <ul className='business-short-detail'>
+              <li>Name:<Link to={`/business/${business.id}`} > {business.name}</Link></li>
+              <li>Description: {business.description}</li>
+              <li>Phone: {business.phone}</li>
+              <li>Rating: {rating}</li>
+              <li>{business.commentIds.length} {(business.commentIds.length > 1) ? 'reviews' : 'review'}</li>
+            </ul>
+          </li>
+        )
+      })
     }
   }
   render() {

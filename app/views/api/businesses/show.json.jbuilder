@@ -4,6 +4,10 @@ json.business do
     json.address @address, :address_first, :address_second, :street, :city, :state, :zip, :lat, :lng
     json.hour @hour, :hours_mon, :hours_tue, :hours_wed, :hours_thu, :hours_fri, :hours_sat, :hours_sun
     json.commentIds @business.comment_ids
+    json.rating do
+      json.rating_avg @rating_scores || '-'
+      json.rating_counts @rating_counts || 0
+    end
   end
 end
 json.comments do
@@ -11,6 +15,13 @@ json.comments do
     json.set! comment.id do
       json.extract! comment, :id, :body, :user_id, :business_id
       json.extract! comment.user, :username
+    end
+  end
+end
+json.rates do
+  if (current_user && @current_user_rating)
+    json.set! current_user.id do
+      json.extract! @current_user_rating, :id, :business_id, :rating
     end
   end
 end

@@ -9,6 +9,7 @@ const mapStateToProps = ({ entities, session, ui }, { match }) => {
     // business: (!!entities.businesses[businessId]) ? entities.businesses[businessId] : false,
     business: entities.businesses[businessId],
     comments: (Object.keys(entities.comments).length > 0) ? entities.comments : false,
+    rates: entities.rates,
     currentUserId: session.currentUserId,
     users: entities.users,
     ui

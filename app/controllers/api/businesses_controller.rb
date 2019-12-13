@@ -1,6 +1,8 @@
 class Api::BusinessesController < ApplicationController
   def index
     @businesses = Business.includes(:comments).all
+    @rating_scores = Business.joins(:rates).group(:id).average(:rating)
+    @rating_counts = Business.joins(:rates).group(:id).count(:rating)
     render 'api/businesses/index'
   end
 
@@ -24,10 +26,16 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.includes(:address, :hour, :comments).find(params[:id])
+    @business = Business.includes(:address, :hour, :comments, :rates).find(params[:id])
+    if (current_user)
+      @current_user_rating = Rate.where("business_id = ? AND user_id = ?", params[:id], current_user.id).first
+    end
     @address = @business.address
     @hour = @business.hour
     @comments = @business.comments.includes(:user)
+    @rating = @business.rates
+    @rating_scores = @rating.average(:rating)
+    @rating_counts = @rating.count(:rating)
     render 'api/businesses/show'
   end
 

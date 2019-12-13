@@ -1,1 +1,1 @@
-json.extract! @rate, :user_id, :business_id, :rating
+json.extract! @rate, :id, :business_id, :rating

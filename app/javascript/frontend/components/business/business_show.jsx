@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CommentFormContainer from '../comment/comment_form_container';
+import RateSelectorContainer from '../rate/rate_selector_container';
 
 class BusinessShow extends React.Component {
   constructor(props) {
@@ -11,8 +12,6 @@ class BusinessShow extends React.Component {
   }
 
   componentDidUpdate(nextProps) {
-    console.log('nextProps');
-    console.log(nextProps);
     let currentbusinessId = nextProps.match.params.businessId;
     let nextbusinessId = nextProps.match.params.businessId;
     if (currentbusinessId !== nextbusinessId) {
@@ -23,25 +22,34 @@ class BusinessShow extends React.Component {
   renderBusinessList() {
     if (!!this.props.business) {
       console.log(this.props);
-      const { business, comments, currentUserId, users } = this.props;
+      const { business, comments, rates, currentUserId, users } = this.props;
       const address = (business.address.address_first) ? `
           ${business.address.address_first} ${business.address.address_second},
           ${business.address.street},
           ${business.address.city}, 
           ${business.address.state} ${business.address.zip}` : 'Not Provided';
+      let rating = '-';
+      if (business.rating.rating_avg !== '-') {
+        rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
+        if (business.rating.rating_counts > 1) {
+          rating = rating + 's';
+        }
+      }
       return (
         <div className='business-single'>
           <Link to=''>Go Back</Link>
           <h3>{business.name}</h3>
           <ul className='business-long-detail'>
-            <li key='description'>Description: {business.description}</li>
-            <li key='phone'>Phone: {business.phone}</li>
-            <li key='address'>Address: {address}</li>
+            <li>Description: {business.description}</li>
+            <li>Phone: {business.phone}</li>
+            <li>Address: {address}</li>
+            <li>Rating: {rating}</li>
           </ul>
           <h4>Operating Hours</h4>
           <ul>
             {this.renderOperatingHours(business.hour)}
           </ul>
+          {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
           <h4>Reviews</h4>
           {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
           <ul>
@@ -52,6 +60,36 @@ class BusinessShow extends React.Component {
     } else {
       return null;
     };
+  }
+
+  renderRatingSection(currentUserId, currentUserRates, businessId) {
+    if (!currentUserId) return null;
+    if (!currentUserRates) {
+      return (
+        <div className='rating-section'>
+          <h4>Rate it!</h4>
+          <RateSelectorContainer
+            action='Create'
+            user_id={currentUserId}
+            business_id={businessId}
+            rating='select one'
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className='rating-section'>
+          <h4>Rate it!</h4>
+          <RateSelectorContainer
+            action='View'
+            user_id={currentUserId}
+            business_id={businessId}
+            rating={currentUserRates.rating}
+            rate_id={currentUserRates.id}
+          />
+        </div>
+      )
+    }
   }
 
   renderOperatingHours(hour) {
@@ -67,8 +105,6 @@ class BusinessShow extends React.Component {
     }
     const currentUser = users[currentUserId];
     const currentUserComment = Object.keys(comments).filter(commentId => currentUser.commentIds.includes(parseInt(commentId)));
-    console.log('currentUserComment');
-    console.log(currentUserComment);
     if (currentUserComment.length > 0) {
       return (
         <div className='user-comment'>
