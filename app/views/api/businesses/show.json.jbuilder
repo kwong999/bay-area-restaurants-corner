@@ -38,5 +38,7 @@ json.votes do
         end
       end
     end
+  elsif (current_user)
+    json.set! current_user.id, {}
   end
 end
