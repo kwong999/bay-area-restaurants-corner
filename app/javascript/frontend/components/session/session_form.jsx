@@ -38,25 +38,28 @@ class SessionForm extends React.Component{
   }
 
   render() {
-    const type = this.props.formType === 'login' ? 'Login' : 'Signup'; 
+    const type = this.props.formType === 'login' ? 'Log In' : 'Sign Up'; 
     return(
-      <div>
-        <h2>{type}</h2>
+      <div className='session'>
+        <div className='session-title'><p>{type}</p></div>
         {this.renderErrors()}
         <form className='session-form'>
           <label>
-            Username:
+            <p>Username:</p>
             <input
               type='text'
               onChange={this.handleChange('username')}
               value={this.state.username}
+              placeholder='username'
             />
-          </label><label>
-            Password:
+          </label>
+          <label>
+            <p>Password:</p>
             <input
               type='password'
               onChange={this.handleChange('password')}
               value={this.state.password}
+              placeholder='password'
             />
           </label>
           <button onClick={this.handleSubmit}>Submit</button>

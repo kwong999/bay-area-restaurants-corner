@@ -5,17 +5,28 @@ class Greeting extends React.Component {
   render() {
     const { currentUser, logout } = this.props;
     const welcomeMessage = () => (
-      <div>
-        <h2>Welcome, {currentUser.username} </h2>
-        <button onClick={logout}>Log Out</button>
+      <div className='greeting logged-in'>
+        <nav>
+          <div>
+            <button><Link to='/'>Home Page</Link></button>
+          </div>
+          <div>
+            <p>Welcome, <span>{currentUser.username}</span></p>
+            <button onClick={logout}>Log Out</button>
+          </div>
+        </nav>
       </div>
     );
     const sessionLinks = () => (
-      <div>
+      <div className='greeting logged-out'>
         <nav>
-          <Link to='/login'>Login</Link>
-          {' or '}
-          <Link to='/signup'>Sign Up!</Link>
+          <div>
+            <button><Link to='/'>Home Page</Link></button>
+          </div>
+          <div>
+            <button><Link to='/login'>Log In</Link></button>
+            <button ><Link to='/signup'>Sign Up</Link></button>
+          </div>
         </nav>
       </div>
     );

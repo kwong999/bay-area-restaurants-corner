@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './session/greeting_container'
 import LoginFormContainer from './session/login_form_container'
@@ -11,18 +11,24 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div>
+          <GreetingContainer />
+        </div>
         <header>
           <h1>Bay Area Restaurants Corner</h1>
-          <p>Find a place for your meal</p>
+          <h2>Find a place for your meal</h2>
         </header>
-        <nav>
-          <GreetingContainer />
-        </nav>
-        <AuthRoute path='/login' component={LoginFormContainer} />
-        <AuthRoute path='/signup' component={SignupFormContainer} />
-        <SearchBarContainer />
-        <Route exact path='/' component={BusinessIndexContainer} />
-        <Route exact path='/business/:businessId' component={BusinessShowContainer} />
+        <Route path='/'>
+          <Switch>
+            <AuthRoute path='/login' component={LoginFormContainer} />
+            <AuthRoute path='/signup' component={SignupFormContainer} />
+            <div>
+              <SearchBarContainer />
+              <Route exact path='/' component={BusinessIndexContainer} />
+              <Route exact path='/business/:businessId' component={BusinessShowContainer} />
+            </div>
+          </Switch>
+        </Route>
         <footer>
 
         </footer>
