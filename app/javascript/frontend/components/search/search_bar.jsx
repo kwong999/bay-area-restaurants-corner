@@ -22,13 +22,15 @@ class SearchBar extends React.Component{
 
   handleReset(e) {
     e.preventDefault();
+    this.props.fetchSearchResult('');
     this.setState({searchLine: ''});
-    this.props.fetchSearchResult(this.state.searchLine);
   }
 
   render() {
     console.log('Search:')
     console.log(this.props);
+    const currentSearch = (this.props.search.length > 0) ? `Search result of: ${this.props.search} ` : '';
+    const resetButton = (this.props.search.length > 0) ? <button onClick={this.handleReset}>Reset Search</button> : '';
     return(
       <div className='search-bar'>
         <form>
@@ -42,7 +44,7 @@ class SearchBar extends React.Component{
             <button onClick={this.handleSubmit}>Search</button>
           </label>
         </form>
-        <button onClick={this.handleReset}>Reset Search</button>
+        <p>{currentSearch} {resetButton}</p>
       </div>
     )
   };
