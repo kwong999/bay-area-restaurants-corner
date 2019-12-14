@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 class BusinessIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchBusinesses();
+    if (this.props.search) {
+      this.props.fetchBusinesses(this.props.search);
+    } else {
+      this.props.fetchBusinesses();
+    }
   }
 
   renderBusinessList() {

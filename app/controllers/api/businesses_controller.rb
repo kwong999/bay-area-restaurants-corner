@@ -1,8 +1,12 @@
 class Api::BusinessesController < ApplicationController
   def index
-    @businesses = Business.includes(:comments).all
-    @rating_scores = Business.joins(:rates).group(:id).average(:rating)
-    @rating_counts = Business.joins(:rates).group(:id).count(:rating)
+    if (params[:search] && params[:search].delete(' ').length > 0)
+      @businesses = Business.includes(:comments).where("name LIKE ?", '%' + params[:search] + '%');
+    else
+      @businesses = Business.includes(:comments).all
+    end
+    @rating_scores = @businesses.joins(:rates).group(:id).average(:rating)
+    @rating_counts = @businesses.joins(:rates).group(:id).count(:rating)
     render 'api/businesses/index'
   end
 

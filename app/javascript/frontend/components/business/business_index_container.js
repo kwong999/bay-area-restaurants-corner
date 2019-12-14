@@ -4,11 +4,12 @@ import { fetchBusinesses } from '../../actions/business_actions'
 
 const mapStateToProps = ({ entities, ui }) => ({
   businesses: entities.businesses,
+  search: entities.search,
   ui
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBusinesses: () => dispatch(fetchBusinesses())
+  fetchBusinesses: search => dispatch(fetchBusinesses(search))
 });
 
 export default connect(

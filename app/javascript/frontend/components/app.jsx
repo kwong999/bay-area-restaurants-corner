@@ -6,6 +6,7 @@ import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
 import BusinessIndexContainer from './business/business_index_container';
 import BusinessShowContainer from './business/business_show_container';
+import SearchBarContainer from './search/search_bar_container';
 class App extends React.Component {
   render() {
     return (
@@ -19,6 +20,7 @@ class App extends React.Component {
         </nav>
         <AuthRoute path='/login' component={LoginFormContainer} />
         <AuthRoute path='/signup' component={SignupFormContainer} />
+        <SearchBarContainer />
         <Route exact path='/' component={BusinessIndexContainer} />
         <Route exact path='/business/:businessId' component={BusinessShowContainer} />
         <footer>

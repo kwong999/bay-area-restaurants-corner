@@ -24,9 +24,9 @@ export const startLoadingBusiness = () => ({
   type: START_LOADING_BUSINESS
 });
 
-export const fetchBusinesses = () => dispatch => {
+export const fetchBusinesses = search => dispatch => {
   dispatch(startLoadingBusiness());
-  return APIUtil.fetchBusinesses()
+  return APIUtil.fetchBusinesses(search)
     .then(businesses => dispatch(receiveBusinesses(businesses)))
 };
 
