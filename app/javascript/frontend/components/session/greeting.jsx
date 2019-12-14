@@ -7,10 +7,10 @@ class Greeting extends React.Component {
     const welcomeMessage = () => (
       <div className='greeting logged-in'>
         <nav>
-          <div>
+          <div className='greeting-left'>
             <button><Link to='/'>Home Page</Link></button>
           </div>
-          <div>
+          <div className='greeting-right'>
             <p>Welcome, <span>{currentUser.username}</span></p>
             <button onClick={logout}>Log Out</button>
           </div>
@@ -20,10 +20,10 @@ class Greeting extends React.Component {
     const sessionLinks = () => (
       <div className='greeting logged-out'>
         <nav>
-          <div>
+          <div className='greeting-left'>
             <button><Link to='/'>Home Page</Link></button>
           </div>
-          <div>
+          <div className='greeting-right'>
             <button><Link to='/login'>Log In</Link></button>
             <button ><Link to='/signup'>Sign Up</Link></button>
           </div>

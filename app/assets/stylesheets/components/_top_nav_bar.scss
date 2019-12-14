@@ -11,7 +11,10 @@
   display: flex;
   justify-content: space-between;
 }
-
+.greeting-right {
+  display: flex;
+  justify-content: right;
+}
 .greeting > nav > div > * {
   margin-top: 20px;
   margin-left: 20px;
