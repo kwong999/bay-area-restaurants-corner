@@ -1,0 +1,39 @@
+.search-bar {
+  margin-top: 10px;
+  font-family: $serif;
+}
+
+.search-bar > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-bar > form > *, .search-bar > div > * {
+  margin-left: 20px;
+}
+
+.search-bar > form > label > input {
+  margin-left: 5px;
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.search-bar > * > button {
+  border-radius: 10px;
+  background: red;
+  color: white;
+  padding: 5px;
+}
+
+.search-bar > * > button:hover {
+  background: darkred;
+}
+
+.search-bar > div {
+  display: flex;
+  justify-content: left;
+}
+
+.search-bar > div > p {
+  padding: 5px;
+}

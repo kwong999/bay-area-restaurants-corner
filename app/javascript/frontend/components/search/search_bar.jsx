@@ -41,10 +41,10 @@ class SearchBar extends React.Component{
               onChange={this.handleChange} 
               value={this.state.searchLine} 
             />
-            <button onClick={this.handleSubmit}>Search</button>
           </label>
+          <button onClick={this.handleSubmit}>Search</button>
         </form>
-        <p>{currentSearch} {resetButton}</p>
+        <div><p>{currentSearch}</p> {resetButton}</div>
       </div>
     )
   };

@@ -1,0 +1,77 @@
+.business-single {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+
+.business-single > h3 {
+  font-family: $sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.business-single > h4, .business-single > * > h4 {
+  font-family: $sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.business-single > ul {
+  margin-top: 20px;
+}
+
+.business-long-detail > li, .business-operating-hours > li, .business-comments > li, .current-user-rate-comment {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-family: $sans-serif;
+}
+
+.business-operating-hours > li {
+  display: flex;
+  justify-content: left;
+}
+
+.business-operating-hours > li > :first-child{
+  width: 40px;
+}
+
+.comment-author, .vote-detail, .vote-options {
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.vote-options > :last-child {
+  margin-left: 5px;
+}
+
+.vote-options > button {
+  border-radius: 10px;
+  background: lightgrey;
+  color: black;
+  padding: 5px;
+}
+
+.vote-options > button:hover {
+  background: gray;
+}
+
+.current-user-rate-comment {
+  display: flex;
+  justify-content: left;
+  font-family: $sans-serif;
+}
+
+.current-user-rate-comment > :first-child {
+  width: 200px;
+}
+
+.rate-form > *, .rate-form > form > *, .comment-form > *, .comment-form > form > * {
+  margin-top: 5px;
+}
+
+.rate-form > form, .comment-form > form {
+  display: flex;
+  flex-direction: column;
+}

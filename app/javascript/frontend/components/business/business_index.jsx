@@ -39,8 +39,8 @@ class BusinessIndex extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business-index'>
-        <h3>Restaurants you might interested in.</h3>
-        <ul>
+        <h3>Restaurants you might interested in:</h3>
+        <ul className='business-list'>
           {this.renderBusinessList()}
         </ul>
       </div>

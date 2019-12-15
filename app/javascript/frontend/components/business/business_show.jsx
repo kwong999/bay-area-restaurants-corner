@@ -38,7 +38,6 @@ class BusinessShow extends React.Component {
       }
       return (
         <div className='business-single'>
-          <Link to=''>Go Back</Link>
           <h3>{business.name}</h3>
           <ul className='business-long-detail'>
             <li>Description: {business.description}</li>
@@ -47,13 +46,20 @@ class BusinessShow extends React.Component {
             <li>Rating: {rating}</li>
           </ul>
           <h4>Operating Hours</h4>
-          <ul>
+          <ul className='business-operating-hours'>
             {this.renderOperatingHours(business.hour)}
           </ul>
-          {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
-          <h4>Reviews</h4>
-          {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
-          <ul>
+          <div className='current-user-rate-comment'>
+            <div>
+              <h4>Rate it!</h4>
+              {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
+            </div>
+            <div>
+            <h4>Reviews</h4>
+            {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
+            </div>
+          </div>
+          <ul className='business-comments'>
             {this.renderComments(business.commentIds, comments)}
           </ul>
         </div>
@@ -68,7 +74,6 @@ class BusinessShow extends React.Component {
     if (!currentUserRates) {
       return (
         <div className='rating-section'>
-          <h4>Rate it!</h4>
           <RateSelectorContainer
             action='Create'
             user_id={currentUserId}
@@ -80,7 +85,6 @@ class BusinessShow extends React.Component {
     } else {
       return (
         <div className='rating-section'>
-          <h4>Rate it!</h4>
           <RateSelectorContainer
             action='View'
             user_id={currentUserId}
@@ -96,7 +100,7 @@ class BusinessShow extends React.Component {
   renderOperatingHours(hour) {
     const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
     return days.map((day, idx) => (
-      <li key={idx}>{day.charAt(6).toUpperCase() + day.slice(7)}: {(hour[day]) ? hour[day] : '-'}</li>
+      <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
     ))
   }
 
@@ -152,8 +156,9 @@ class BusinessShow extends React.Component {
       }
       return (
         <li key={idx}>  
-          <p>{comment.body} by {comment.username}</p>
-          <p>{voteLine}</p>
+          <p>{comment.body}</p>
+          <p className='comment-author'>by {comment.username}</p>
+          <p className='vote-detail'>{voteLine}</p>
           {this.renderVoteOptions(parseInt(id))}
         </li>
       );

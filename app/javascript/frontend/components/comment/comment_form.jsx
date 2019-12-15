@@ -47,21 +47,26 @@ class CommentForm extends React.Component {
   handleCommentDelete(e) {
     e.preventDefault();
     const { user_id, business_id } = this.props;
-    this.props.destroyComment(this.props.comment_id)
-    this.setState({ action: 'Create' })
-    this.props.fetchUser(user_id);
-    this.props.fetchBusiness(business_id);
-    this.forceUpdate();
+    if (this.props.destroyComment(this.props.comment_id)) {
+      this.setState({ action: 'Create' });
+      this.props.fetchUser(user_id);
+      this.props.fetchBusiness(business_id);
+      this.forceUpdate();
+    }
   }
 
   renderNewForm() {
     return (
       <div className='comment-form'>
-        <p>{this.state.action} Comment</p>
+        <p>{this.state.action} review</p>
         <form>
           <label>
-            Your Comment:
-            <textarea value={this.state.body} onChange={this.handleChange} />
+            <p>Your review:</p>
+            <textarea
+              value={this.state.body}
+              onChange={this.handleChange}
+              placeholder='type your review here'
+              />
             <br />
             <button onClick={this.handleSubmit}>Submit</button>
           </label>
@@ -73,10 +78,10 @@ class CommentForm extends React.Component {
   renderUpdateForm() {
     return (
       <div className='comment-form'>
-        <p>{this.state.action} Comment</p>
+        <p>{this.state.action} review</p>
         <form>
           <label>
-            Your Comment:
+            <p>Your review:</p>
             <textarea value={this.state.body} onChange={this.handleChange} />
             <br />
             <button onClick={this.handleSubmit}>Submit</button>
@@ -90,10 +95,12 @@ class CommentForm extends React.Component {
   renderView() {
     return (
       <div className='comment-form'>
-        <p>Your rate:</p>
+        <p>Your review:</p>
         <p>{this.state.body}</p>
-        <button onClick={this.handleCommentEdit}>Edit</button>
-        <button onClick={this.handleCommentDelete}>Delete</button>
+        <form>
+          <button onClick={this.handleCommentEdit}>Edit</button>
+          <button onClick={this.handleCommentDelete}>Delete</button>
+        </form>
       </div>
     );
   }

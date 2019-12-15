@@ -91,8 +91,8 @@ class RateSelector extends React.Component {
                 <option value={option} key={option}>{option}</option>
               ))}
             </select>
-            <button onClick={this.handleSubmit}>Submit</button>
           </label>
+          <button onClick={this.handleSubmit}>Submit</button>
         </form>
         <button onClick={this.handleEdit}>Cancel</button>
       </div>
@@ -105,8 +105,10 @@ class RateSelector extends React.Component {
       <div className='rate-form'>
         <p>Current Rating:</p>
         <p>{currentRating}</p>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleDelete}>Delete</button>
+        <form>
+          <button onClick={this.handleEdit}>Edit</button>
+          <button onClick={this.handleDelete}>Delete</button>
+        </form>
       </div>
     );
   }
