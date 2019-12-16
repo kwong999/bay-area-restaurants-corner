@@ -30,13 +30,13 @@ class RateSelector extends React.Component {
     rate.rating = this.state.rating;
     if (this.state.action === 'Edit') {
       this.props.updateRate(rate, this.props.rate_id)
-        .then(() => this.setState({ action: 'View' }));
+        .then(() => {
+          this.setState({ action: 'View' });
+        });
     } else if (this.state.action === 'Create') {
       this.props.createRate(rate)
         .then(() => {
           this.setState({ action: 'View' });
-          this.props.fetchUser(user_id);
-          this.props.fetchBusiness(business_id);
         });
     }
   }

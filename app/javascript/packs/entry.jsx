@@ -5,6 +5,7 @@ import configureStore from '../frontend/store/store';
 
 import { fetchBusinesses } from '../frontend/actions/business_actions'
 import { fetchSearchResult } from '../frontend/actions/search_actions'
+import { fetchUser } from '../frontend/actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.fetchBusinesses = fetchBusinesses;
   window.fetchSearchResult = fetchSearchResult;
+  window.fetchUser = fetchUser;
   //TEST END
   ReactDOM.render(<Root store={store}/>, document.getElementById('root'))
 });

@@ -22,11 +22,11 @@ class App extends React.Component {
           <Switch>
             <AuthRoute path='/login' component={LoginFormContainer} />
             <AuthRoute path='/signup' component={SignupFormContainer} />
-            <div>
+            <>
               <SearchBarContainer />
               <Route exact path='/' component={BusinessIndexContainer} />
               <Route exact path='/business/:businessId' component={BusinessShowContainer} />
-            </div>
+            </>
           </Switch>
         </Route>
         <footer>

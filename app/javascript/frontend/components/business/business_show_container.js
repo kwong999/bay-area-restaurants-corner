@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import BusinessShow from './business_show';
 import { fetchBusiness } from '../../actions/business_actions'
+import { fetchUser } from '../../actions/user_actions';
+import { stateUpdated } from '../../actions/update_actions';
 
 const mapStateToProps = ({ entities, session, ui }, { match }) => {
   const businessId = parseInt(match.params.businessId);
@@ -17,7 +19,9 @@ const mapStateToProps = ({ entities, session, ui }, { match }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchBusiness: id => dispatch(fetchBusiness(id))
+  fetchBusiness: id => dispatch(fetchBusiness(id)),
+  fetchUser: id => dispatch(fetchUser(id)),
+  stateUpdated: () => dispatch(stateUpdated())
 });
 
 export default connect(

@@ -8,15 +8,23 @@ class BusinessShow extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     this.props.fetchBusiness(this.props.businessId);
+    if (this.props.currentUserId) {
+      this.props.fetchUser(this.props.currentUserId);
+    }
   }
 
+  componentDidUpdate(prevState) {
+    if (!this.props.ui.update.updated) {
+      this.props.fetchUser(this.props.currentUserId);
+      this.props.stateUpdated();
+    }
+  }
 
-
-  renderBusinessDetail() {
-    console.log(this.props);
-    const { business, comments, rates, currentUserId, users } = this.props;
+  renderBusinessLongDetail() {
+    const { business } = this.props;
     const address = (business.address.address_first) ? `
         ${business.address.address_first} ${business.address.address_second},
         ${business.address.street},
@@ -30,33 +38,20 @@ class BusinessShow extends React.Component {
       }
     }
     return (
-      <div className='business-single'>
-        <h3>{business.name}</h3>
-        <ul className='business-long-detail'>
-          <li>Description: {business.description}</li>
-          <li>Phone: {business.phone}</li>
-          <li>Address: {address}</li>
-          <li>Rating: {rating}</li>
-        </ul>
-        <h4>Operating Hours</h4>
-        <ul className='business-operating-hours'>
-          {this.renderOperatingHours(business.hour)}
-        </ul>
-        <div className='current-user-rate-comment'>
-          <div>
-            <h4>Rate it!</h4>
-            {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
-          </div>
-          <div>
-          <h4>Reviews</h4>
-          {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
-          </div>
-        </div>
-        <ul className='business-comments'>
-          {this.renderComments(business.commentIds, comments)}
-        </ul>
-      </div>
+      <ul className='business-long-detail'>
+        <li>Description: {business.description}</li>
+        <li>Phone: {business.phone}</li>
+        <li>Address: {address}</li>
+        <li>Rating: {rating}</li>
+      </ul>
     )
+  }
+
+  renderOperatingHours(hour) {
+    const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
+    return days.map((day, idx) => (
+      <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
+    ))
   }
 
   renderRatingSection(currentUserId, currentUserRates, businessId) {
@@ -85,13 +80,6 @@ class BusinessShow extends React.Component {
         </div>
       )
     }
-  }
-
-  renderOperatingHours(hour) {
-    const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
-    return days.map((day, idx) => (
-      <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
-    ))
   }
 
   renderCurrentUserReview(currentUserId, comments, users, businessId) {
@@ -178,13 +166,34 @@ class BusinessShow extends React.Component {
       />
     )
   }
+
   render() {
     if (this.props.ui.loadingBusiness) return null;
     if (!this.props.business) return null;
     if (!this.props.business.address) return null;
+    console.log(this.props);
+    const { business, comments, rates, currentUserId, users } = this.props;
     return (
-      <div>
-        {this.renderBusinessDetail()}
+      <div className='business-single'>
+        <h3>{business.name}</h3>
+        {this.renderBusinessLongDetail()}
+        <h4>Operating Hours</h4>
+        <ul className='business-operating-hours'>
+          {this.renderOperatingHours(business.hour)}
+        </ul>
+        <div className='current-user-rate-comment'>
+          <div>
+            <h4>Rate it!</h4>
+            {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
+          </div>
+          <div>
+            <h4>Reviews</h4>
+            {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
+          </div>
+        </div>
+        <ul className='business-comments'>
+          {this.renderComments(business.commentIds, comments)}
+        </ul>
       </div>
       )
   };
