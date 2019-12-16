@@ -12,61 +12,51 @@ class BusinessShow extends React.Component {
     this.props.fetchBusiness(this.props.businessId);
   }
 
-  componentDidUpdate(nextProps) {
-    let currentbusinessId = nextProps.match.params.businessId;
-    let nextbusinessId = nextProps.match.params.businessId;
-    if (currentbusinessId !== nextbusinessId) {
-      this.props.fetchBusiness(nextbusinessId);
-    }
-  }
 
-  renderBusinessList() {
-    if (!!this.props.business) {
-      console.log(this.props);
-      const { business, comments, rates, currentUserId, users } = this.props;
-      const address = (business.address.address_first) ? `
-          ${business.address.address_first} ${business.address.address_second},
-          ${business.address.street},
-          ${business.address.city}, 
-          ${business.address.state} ${business.address.zip}` : 'Not Provided';
-      let rating = '-';
-      if (business.rating.rating_avg !== '-') {
-        rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
-        if (business.rating.rating_counts > 1) {
-          rating = rating + 's';
-        }
+
+  renderBusinessDetail() {
+    console.log(this.props);
+    const { business, comments, rates, currentUserId, users } = this.props;
+    const address = (business.address.address_first) ? `
+        ${business.address.address_first} ${business.address.address_second},
+        ${business.address.street},
+        ${business.address.city}, 
+        ${business.address.state} ${business.address.zip}` : 'Not Provided';
+    let rating = '-';
+    if (business.rating.rating_avg !== '-') {
+      rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
+      if (business.rating.rating_counts > 1) {
+        rating = rating + 's';
       }
-      return (
-        <div className='business-single'>
-          <h3>{business.name}</h3>
-          <ul className='business-long-detail'>
-            <li>Description: {business.description}</li>
-            <li>Phone: {business.phone}</li>
-            <li>Address: {address}</li>
-            <li>Rating: {rating}</li>
-          </ul>
-          <h4>Operating Hours</h4>
-          <ul className='business-operating-hours'>
-            {this.renderOperatingHours(business.hour)}
-          </ul>
-          <div className='current-user-rate-comment'>
-            <div>
-              <h4>Rate it!</h4>
-              {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
-            </div>
-            <div>
-            <h4>Reviews</h4>
-            {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
-            </div>
+    }
+    return (
+      <div className='business-single'>
+        <h3>{business.name}</h3>
+        <ul className='business-long-detail'>
+          <li>Description: {business.description}</li>
+          <li>Phone: {business.phone}</li>
+          <li>Address: {address}</li>
+          <li>Rating: {rating}</li>
+        </ul>
+        <h4>Operating Hours</h4>
+        <ul className='business-operating-hours'>
+          {this.renderOperatingHours(business.hour)}
+        </ul>
+        <div className='current-user-rate-comment'>
+          <div>
+            <h4>Rate it!</h4>
+            {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
           </div>
-          <ul className='business-comments'>
-            {this.renderComments(business.commentIds, comments)}
-          </ul>
+          <div>
+          <h4>Reviews</h4>
+          {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
+          </div>
         </div>
-      )
-    } else {
-      return null;
-    };
+        <ul className='business-comments'>
+          {this.renderComments(business.commentIds, comments)}
+        </ul>
+      </div>
+    )
   }
 
   renderRatingSection(currentUserId, currentUserRates, businessId) {
@@ -194,7 +184,7 @@ class BusinessShow extends React.Component {
     if (!this.props.business.address) return null;
     return (
       <div>
-        {this.renderBusinessList()}
+        {this.renderBusinessDetail()}
       </div>
       )
   };
