@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import ProfileIndex from './profile_index';
 import { fetchUser } from '../../actions/user_actions';
+import ProfileTab from './profile_tab';
 
 const mapStateToProps = (state, { match }) => ({
-  currentUser: state.entities.users[match.params.userId]
+  currentUser: state.entities.users[match.params.userId],
+  type: 'index'
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileIndex);
+)(ProfileTab);
