@@ -12,6 +12,7 @@ class Greeting extends React.Component {
           </div>
           <div className='greeting-right'>
             <p>Welcome, <span>{currentUser.username}</span></p>
+            <button><Link to={`/user/${currentUser.id}/index`}>Profile</Link></button>
             <button onClick={logout}>Log Out</button>
           </div>
         </nav>
@@ -25,7 +26,7 @@ class Greeting extends React.Component {
           </div>
           <div className='greeting-right'>
             <button><Link to='/login'>Log In</Link></button>
-            <button ><Link to='/signup'>Sign Up</Link></button>
+            <button><Link to='/signup'>Sign Up</Link></button>
           </div>
         </nav>
       </div>

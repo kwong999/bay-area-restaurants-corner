@@ -7,6 +7,8 @@ import SignupFormContainer from './session/signup_form_container'
 import BusinessIndexContainer from './business/business_index_container';
 import BusinessShowContainer from './business/business_show_container';
 import SearchBarContainer from './search/search_bar_container';
+import ProfileShowContainer from './profile/profile_show_container';
+
 class App extends React.Component {
   render() {
     return (
@@ -22,6 +24,7 @@ class App extends React.Component {
           <Switch>
             <AuthRoute path='/login' component={LoginFormContainer} />
             <AuthRoute path='/signup' component={SignupFormContainer} />
+            <Route path='/user/:userId' component={ProfileShowContainer} />
             <>
               <SearchBarContainer />
               <Route exact path='/' component={BusinessIndexContainer} />

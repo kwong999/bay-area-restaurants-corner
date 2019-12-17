@@ -18,6 +18,7 @@ class BusinessShow extends React.Component {
 
   componentDidUpdate(prevState) {
     if (!this.props.ui.update.updated) {
+      this.props.fetchBusiness(this.props.businessId);
       this.props.fetchUser(this.props.currentUserId);
       this.props.stateUpdated();
     }
@@ -171,6 +172,9 @@ class BusinessShow extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     if (!this.props.business) return null;
     if (!this.props.business.address) return null;
+    if (this.props.currentUserId) {
+      if (!this.props.users[this.props.currentUserId].commentIds) return null;
+    }
     console.log(this.props);
     const { business, comments, rates, currentUserId, users } = this.props;
     return (

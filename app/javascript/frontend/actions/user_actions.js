@@ -12,8 +12,8 @@ export const startLoadingUser = () => ({
   type: START_LOADING_USER,
 })
 
-export const fetchUser = id => dispatch => {
+export const fetchUser = (id, args) => dispatch => {
   dispatch(startLoadingUser());
-  return APIUtil.fetchUser(id)
+  return APIUtil.fetchUser(id, args)
     .then(user => dispatch(receiveUser(user)))
 };
