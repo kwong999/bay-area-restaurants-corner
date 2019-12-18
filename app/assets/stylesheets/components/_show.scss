@@ -1,24 +1,33 @@
 .business-single {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.business-single-left, .business-single-right {
+  font-size: 16px;
+  width: 50%;
+}
+
+.business-single-left > *:not(.middle-line) {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
-  font-size: 16px;
+  margin-right: 20px;
 }
 
-
-.business-single > h3 {
+.business-single-left > h3 {
   font-family: $sans-serif;
   font-size: 22px;
   font-weight: bold;
 }
 
-.business-single > h4, .business-single > * > h4 {
+.business-single-left > h4, .business-single-left > * > h4 {
   font-family: $sans-serif;
   font-size: 18px;
   font-weight: bold;
 }
 
-.business-single > ul {
+.business-single-left > ul {
   margin-top: 20px;
 }
 

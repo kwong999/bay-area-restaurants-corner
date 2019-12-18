@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CommentFormContainer from '../comment/comment_form_container';
 import RateSelectorContainer from '../rate/rate_selector_container';
 import VoteLineContainer from '../vote/vote_line_container';
+import MiddleLine from '../ui/middle_line';
 
 class BusinessShow extends React.Component {
   constructor(props) {
@@ -40,10 +41,10 @@ class BusinessShow extends React.Component {
     }
     return (
       <ul className='business-long-detail'>
+        <li>Rating: {rating}</li>
         <li>Description: {business.description}</li>
         <li>Phone: {business.phone}</li>
         <li>Address: {address}</li>
-        <li>Rating: {rating}</li>
       </ul>
     )
   }
@@ -179,25 +180,34 @@ class BusinessShow extends React.Component {
     const { business, comments, rates, currentUserId, users } = this.props;
     return (
       <div className='business-single'>
-        <h3>{business.name}</h3>
-        {this.renderBusinessLongDetail()}
-        <h4>Operating Hours</h4>
-        <ul className='business-operating-hours'>
-          {this.renderOperatingHours(business.hour)}
-        </ul>
-        <div className='current-user-rate-comment'>
-          <div>
-            <h4>Rate it!</h4>
-            {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
+        <div className='business-single-left'>
+          <h3>{business.name}</h3>
+          {this.renderBusinessLongDetail()}
+          <MiddleLine />
+          <h4>Operating Hours</h4>
+          <ul className='business-operating-hours'>
+            {this.renderOperatingHours(business.hour)}
+          </ul>
+          <MiddleLine />
+          <div className='current-user-rate-comment'>
+            <div>
+              <h4>Rate it!</h4>
+              {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
+            </div>
+            <div>
+              <h4>Reviews</h4>
+              {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
+            </div>
           </div>
-          <div>
-            <h4>Reviews</h4>
-            {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
-          </div>
+          <MiddleLine />
+          <ul className='business-comments'>
+            {this.renderComments(business.commentIds, comments)}
+          </ul>
         </div>
-        <ul className='business-comments'>
-          {this.renderComments(business.commentIds, comments)}
-        </ul>
+        <div className='business-single-right'>
+          <p>This is right.</p>
+          <MiddleLine />
+        </div>
       </div>
       )
   };

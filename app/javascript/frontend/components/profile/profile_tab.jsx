@@ -2,6 +2,7 @@ import React from 'react';
 import RenderRates from './rates';
 import RenderComments from './comment';
 import RenderVotes from './vote';
+import MiddleLine from '../ui/middle_line';
 
 class ProfileTab extends React.Component {
 
@@ -45,13 +46,14 @@ class ProfileTab extends React.Component {
         return (
           <>
             <div className='recent-rates'>
-              <h3>Recent Rates</h3>
+              <h4>Recent Rates</h4>
               <ul>
                 <RenderRates rates={this.props.currentUser.rates} />
               </ul>
             </div>
+            <MiddleLine />
             <div className='recent-comments'>
-              <h3>Recent Comments</h3>
+              <h4>Recent Comments</h4>
               <ul>
                 <RenderComments comments={this.props.currentUser.comments} />
               </ul>
@@ -62,7 +64,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.rates) return null;
         return (
           <div className='rates-history'>
-            <h3>Rates History</h3>
+            <h4>Rates History</h4>
             <ul>
               <RenderRates rates={this.props.currentUser.rates} />
             </ul>
@@ -72,7 +74,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.comments) return null;
         return (
           <div className='comments-history'>
-            <h3>Comments History</h3>
+            <h4>Comments History</h4>
             <ul>
               <RenderComments comments={this.props.currentUser.comments} />
             </ul>
@@ -82,7 +84,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.votes) return null;
         return (
           <div className='votes-history'>
-            <h3>Votes History</h3>
+            <h4>Votes History</h4>
             <ul>
               <RenderVotes votes={this.props.currentUser.votes} />
             </ul>

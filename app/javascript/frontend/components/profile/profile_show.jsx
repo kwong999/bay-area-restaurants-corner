@@ -27,7 +27,9 @@ class ProfileShow extends React.Component {
     const { currentUser } = this.props;
     return(
       <>
-        {currentUser.username}
+        <h3>
+          {currentUser.username}
+        </h3>
         <ul>
           <Link to={`/user/${currentUser.id}/index`}>Index</Link>
           <Link to={`/user/${currentUser.id}/rates`}>Rates Record</Link>
