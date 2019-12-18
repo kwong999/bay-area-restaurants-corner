@@ -8,8 +8,25 @@ import { fetchSearchResult } from '../frontend/actions/search_actions'
 import { fetchUser } from '../frontend/actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("currentUser: ");
+  console.log(window.currentUser);
   let store;
-  store = configureStore();
+  if (window.currentUser) {
+    const { currentUser } = window;
+    const { id } = currentUser;
+    const preloadedState = {
+      entities: {
+        users: {
+          [id]: currentUser
+        }
+      },
+      session: { currentUserId: id }
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  }
   //TEST START
   window.dispatch = store.dispatch;
   window.getState = store.getState;
