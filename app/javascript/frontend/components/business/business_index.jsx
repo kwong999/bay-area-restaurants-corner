@@ -1,44 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import BusinessShort from './business_short';
 
 class BusinessIndex extends React.Component {
   componentDidMount() {
     if (this.props.search) {
-      this.props.fetchBusinesses(this.props.search);
+      this.props.fetchBusinesses({ search: this.props.search});
     } else {
       this.props.fetchBusinesses();
     }
   }
 
   renderBusinessList() {
-    const businessList = Object.keys(this.props.businesses).map( key => this.props.businesses[key]);
-    if (businessList) {
-      return businessList.map( (business, idx) => {
-        let rating = '-';
-        if (business.rating.rating_avg !== '-') {
-          rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
-          if (business.rating.rating_counts > 1) {
-            rating = rating + 's';
-          }
-        }
-        return (
-          <li key={`business-${business.id}`}>
-            <ul className='business-short-detail'>
-              <li>Name:<Link to={`/business/${business.id}`} > {business.name}</Link></li>
-              <li>Description: {business.description}</li>
-              <li>Phone: {business.phone}</li>
-              <li>Rating: {rating}</li>
-              <li>{business.commentIds.length} {(business.commentIds.length > 1) ? 'reviews' : 'review'}</li>
-            </ul>
-          </li>
-        )
-      })
+    const businessList = Object.keys(this.props.businesses)
+      .filter(key => key != 'count')
+      .map( key => this.props.businesses[key]);
+    if (Object.keys(this.props.businesses).length > 0) {
+      return businessList.map( (business) => 
+        <BusinessShort business={business} key={business.id}/>
+      )
+    } else {
+      return null;
     }
   }
+  
   render() {
     if (this.props.ui.loadingBusiness) return null;
     return(
-      <div className='business-index'>
+      <div className='business'>
         <h3>Restaurants you might interested in:</h3>
         <ul className='business-list'>
           {this.renderBusinessList()}

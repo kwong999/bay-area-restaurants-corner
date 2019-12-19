@@ -10,3 +10,4 @@ json.businesses do
     end
   end
 end
+json.count @count

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component{
   constructor(props) {
@@ -42,7 +43,7 @@ class SearchBar extends React.Component{
               value={this.state.searchLine} 
             />
           </label>
-          <button onClick={this.handleSubmit}>Search</button>
+          <button onClick={this.handleSubmit}><Link to='/'>Search</Link></button>
         </form>
         <div><p>{currentSearch}</p> {resetButton}</div>
       </div>

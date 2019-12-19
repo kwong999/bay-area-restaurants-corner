@@ -4,6 +4,7 @@ import CommentFormContainer from '../comment/comment_form_container';
 import RateSelectorContainer from '../rate/rate_selector_container';
 import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
+import Map from '../map/map';
 
 class BusinessShow extends React.Component {
   constructor(props) {
@@ -205,7 +206,8 @@ class BusinessShow extends React.Component {
           </ul>
         </div>
         <div className='business-single-right'>
-          <p>This is right.</p>
+          <h4>Location</h4>
+          <Map pos={business.pos}/>
           <MiddleLine />
         </div>
       </div>

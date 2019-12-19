@@ -47,8 +47,8 @@ a1 = Address.create!({
   city: "Hayward",
   state: "CA",
   zip: "94545",
-  lat: 37.631372, 
-  lng: -122.096493
+  lat: 37.6313705, 
+  lng: -122.0964926
 })
 
 h1 = Hour.create!({
@@ -76,8 +76,8 @@ a2 = Address.create!({
   city: "Hayward",
   state: "CA",
   zip: "94545",
-  lat: 37.644003,
-  lng: -122.104355
+  lat: 37.6440016,
+  lng: -122.1043556
 })
 
 h2 = Hour.create!({
@@ -105,8 +105,8 @@ a3 = Address.create!({
   city: "Hayward",
   state: "CA",
   zip: "94545",
-  lat: 37.647824,
-  lng:  -122.106584
+  lat: 37.6478222,
+  lng:  -122.1065811
 })
 
 h3 = Hour.create!({

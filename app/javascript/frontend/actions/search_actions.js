@@ -10,6 +10,6 @@ export const receiveSearch = search => ({
 
 export const fetchSearchResult = search => dispatch => {
   dispatch(receiveSearch(search));
-  return APIUtil.fetchBusinesses(search)
+  return APIUtil.fetchBusinesses({ search: search })
     .then(businesses => dispatch(receiveBusinesses(businesses)))
 };

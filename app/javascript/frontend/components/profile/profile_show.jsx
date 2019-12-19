@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, withRoute } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import ProfileIndexContainer from './profile_index_container';
 import ProfileRateContainer from './profile_rate_container';
 import ProfileCommentContainer from './profile_comment_container';

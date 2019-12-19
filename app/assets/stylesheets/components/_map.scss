@@ -1,0 +1,16 @@
+#map-container {
+  width: 500px;
+  height: 500px;
+  background: burlywood;
+  margin: auto;
+  position: relative;
+}
+
+#map-container p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  text-align: center;
+}

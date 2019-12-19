@@ -1,7 +1,11 @@
 class Api::BusinessesController < ApplicationController
   def index
+    @count = Business.count
     if (params[:search] && params[:search].delete(' ').length > 0)
-      @businesses = Business.includes(:comments).where("name LIKE ?", '%' + params[:search] + '%');
+      @businesses = Business.includes(:comments).where("name LIKE ?", '%' + params[:search] + '%')
+    elsif (params[:limit] && params[:page])
+      offset = params[:limit].to_i * ( params[:page].to_i - 1 )
+      @businesses = Business.includes(:comments).limit(params[:limit]).offset(offset)
     else
       @businesses = Business.includes(:comments).all
     end

@@ -8,6 +8,7 @@ import BusinessIndexContainer from './business/business_index_container';
 import BusinessShowContainer from './business/business_show_container';
 import SearchBarContainer from './search/search_bar_container';
 import ProfileShowContainer from './profile/profile_show_container';
+import BusinessMain from './business/business_main';
 
 class App extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class App extends React.Component {
             <Route path='/user/:userId' component={ProfileShowContainer} />
             <>
               <SearchBarContainer />
-              <Route exact path='/' component={BusinessIndexContainer} />
+              <Route path='/' component={BusinessMain} />
               <Route exact path='/business/:businessId' component={BusinessShowContainer} />
             </>
           </Switch>
