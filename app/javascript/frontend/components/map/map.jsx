@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Map extends React.Component {
-
+  shouldComponentUpdate(nextProps) {
+    if (this.props.pos.lat === nextProps.pos.lat && this.props.pos.lng === nextProps.pos.lng) {
+      console.log('Stop map');
+      return false;
+    } else {
+      return true;
+    }
+  }
   componentDidMount() {
-    if (false) {
+    if (this.props.pos) {
+      console.log("Rendered-map");
       // const { pos } = this.props;
       // const mapOptions = {
       //   center: pos,
@@ -16,16 +24,14 @@ class Map extends React.Component {
       //   position: pos,
       //   map: this.map
       // });
-    } else {
-      console.log("Map function currently not available.");
     }
   }
   
   render() {
+    console.log(this.constructor.name);
+    console.log(this.props);
     return (
-      <div ref='map' id='map-container'>
-        <p>Map function currently not available.</p>
-      </div>
+      <div ref='map' id='map-container'></div>
     )
   }
 }
