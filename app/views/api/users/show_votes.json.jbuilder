@@ -5,3 +5,4 @@ json.votes do
     json.extract! vote, :id, :comment_id, :business_id, :voting, :comment_body, :comment_author, :business_name
   end
 end
+json.count @count

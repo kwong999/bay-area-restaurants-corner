@@ -36,7 +36,5 @@ export const updateVote = (vote, id) => dispatch => (
 
 export const destroyVote = id => dispatch => (
   APIUtil.destroyVote(id)
-    .then(
-      () => dispatch(deleteVote())
-    )
+    .then( () => dispatch(deleteVote()) )
 )

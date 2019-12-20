@@ -30,14 +30,10 @@ class RateSelector extends React.Component {
     rate.rating = this.state.rating;
     if (this.state.action === 'Edit') {
       this.props.updateRate(rate, this.props.rate_id)
-        .then(() => {
-          this.setState({ action: 'View' });
-        });
+        .then(() => this.setState({ action: 'View' }));
     } else if (this.state.action === 'Create') {
       this.props.createRate(rate)
-        .then(() => {
-          this.setState({ action: 'View' });
-        });
+        .then(() => this.setState({ action: 'View' }));
     }
   }
 
@@ -49,12 +45,8 @@ class RateSelector extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    const { user_id, business_id } = this.props;
     this.props.destroyRate(this.props.rate_id)
-    this.setState({ action: 'Create' })
-    this.props.fetchUser(user_id);
-    this.props.fetchBusiness(business_id);
-    this.forceUpdate();
+      .then ( () => this.setState({ action: 'Create' }));
   }
 
   renderUpdateSelector() {

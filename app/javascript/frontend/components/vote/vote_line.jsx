@@ -21,19 +21,16 @@ class VoteLine extends React.Component {
           return this.sendVote(vote)
             .then( () => {
               this.setState({ action: 'Upvoted' });
-              this.props.fetchBusiness(business_id);
             });
         case 'downvote':
           vote.voting = -1;
           return this.sendVote(vote)
             .then(() => {
               this.setState({ action: 'Downoted' });
-              this.props.fetchBusiness(business_id);
             });
         case 'unvote':
-          this.setState({ action: 'Vote' });
-          this.props.destroyVote(this.props.vote.id);
-          return this.props.fetchBusiness(business_id);
+          this.props.destroyVote(this.props.vote.id)
+            .then(() => this.setState({ action: 'Vote' }));
         default:
           return null;
       }

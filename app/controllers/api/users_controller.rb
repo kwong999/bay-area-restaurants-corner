@@ -8,17 +8,20 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id]);
     case params[:show]
     when 'index'
-      @user_rates = user_rates(@user, 5)
-      @user_comments = user_comments(@user, 5)
+      @user_rates = user_rates(@user, 5, 1)
+      @user_comments = user_comments(@user, 5, 1)
       render 'api/users/show_index'
     when 'rates'
-      @user_rates = user_rates(@user, 10)
+      @user_rates = user_rates(@user, params[:limit], params[:page])
+      @count = @user.rates.count
       render 'api/users/show_rates'
     when 'comments'
-      @user_comments = user_comments(@user, 10)
+      @user_comments = user_comments(@user, params[:limit], params[:page])
+      @count = @user.comments.count
       render 'api/users/show_comments'
     when 'votes'
-      @user_votes = user_votes(@user, 10)
+      @user_votes = user_votes(@user, params[:limit], params[:page])
+      @count = @user.votes.count
       render 'api/users/show_votes'
     else
       render 'api/users/show'
@@ -41,25 +44,30 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :password)
   end
 
-  def user_rates(user, limit)
+  def user_rates(user, limit, page)
+    offset = limit.to_i * ( page.to_i - 1 )
     user
       .rates
       .includes(:business)
       .order('updated_at DESC')
       .limit(limit)
+      .offset(offset)
       .map{ |rate| rate.as_json.merge("business_name" => rate.business.name).symbolize_keys }
   end
 
-  def user_comments(user, limit)
+  def user_comments(user, limit, page)
+    offset = limit.to_i * ( page.to_i - 1 )
     user
       .comments
       .includes(:business)
       .order('updated_at DESC')
       .limit(limit)
+      .offset(offset)
       .map{ |comment| comment.as_json.merge("business_name" => comment.business.name).symbolize_keys }
   end
 
-  def user_votes(user, limit)
+  def user_votes(user, limit, page)
+    offset = limit.to_i * ( page.to_i - 1 )
     user
       .votes
       .includes({
@@ -68,6 +76,7 @@ class Api::UsersController < ApplicationController
         })
       .order('updated_at DESC')
       .limit(limit)
+      .offset(offset)
       .map{ |vote| vote.as_json.merge({
         "comment_body" => vote.comment.body,
         "comment_author" => vote.comment.user.username,

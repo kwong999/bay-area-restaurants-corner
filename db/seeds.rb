@@ -126,22 +126,10 @@ c1 = Comment.create!({
   body: 'Pretty Good'
 })
 
-r1 = Rate.create!({
-  user_id: u2.id,
-  business_id: b1.id,
-  rating: 3.0
-})
-
 c2 = Comment.create!({
   user_id: u2.id,
   business_id: b2.id,
   body: 'A bit expensive'
-})
-
-r2 = Rate.create!({
-  user_id: u2.id,
-  business_id: b2.id,
-  rating: 2.5
 })
 
 c3 = Comment.create!({
@@ -150,9 +138,39 @@ c3 = Comment.create!({
   body: 'Better than I expect'
 })
 
+c4 = Comment.create!({
+  user_id: u2.id,
+  business_id: b3.id,
+  body: 'Very Good'
+})
+
+c5 = Comment.create!({
+  user_id: u4.id,
+  business_id: b1.id,
+  body: 'Not bad'
+})
+
+r1 = Rate.create!({
+  user_id: u2.id,
+  business_id: b1.id,
+  rating: 3.0
+})
+
+r2 = Rate.create!({
+  user_id: u2.id,
+  business_id: b2.id,
+  rating: 2.5
+})
+
 r3 = Rate.create!({
   user_id: u3.id,
   business_id: b1.id,
+  rating: 4.0
+})
+
+r4 = Rate.create!({
+  user_id: u2.id,
+  business_id: b3.id,
   rating: 4.0
 })
 
@@ -189,5 +207,11 @@ v3 = Vote.create!({
 v4 = Vote.create!({
   user_id: u3.id,
   comment_id: c4.id,
+  voting: 1
+})
+
+v5 = Vote.create!({
+  user_id: u2.id,
+  comment_id: c3.id,
   voting: 1
 })

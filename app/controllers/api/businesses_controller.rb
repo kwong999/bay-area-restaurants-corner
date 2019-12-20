@@ -38,10 +38,17 @@ class Api::BusinessesController < ApplicationController
     if (current_user)
       @current_user_rating = Rate.where("business_id = ? AND user_id = ?", params[:id], current_user.id).first
       @current_user_votes = Vote.where(comment_id: @business.comment_ids).where(user_id: current_user.id)
+      @current_user_comments = Comment.where(business_id: params[:id]).where(user_id: current_user.id)
     end
     @address = @business.address
     @hour = @business.hour
-    @comments = @business.comments.includes(:user, :votes)
+    offset = params[:limit].to_i * ( params[:page].to_i - 1 )
+    @comments = Comment
+      .where(business_id: params[:id])
+      .includes(:user, :votes)
+      .order('updated_at DESC')
+      .limit(params[:limit])
+      .offset(offset)
     @comments_vote_cal = Comment
       .select("comment_id AS id, SUM(votes.voting), COUNT(votes.voting)")
       .joins(:votes)

@@ -30,11 +30,7 @@ class CommentForm extends React.Component {
         .then(() => this.setState({ action: 'View'}));
     } else if (this.state.action === 'Create') {
       this.props.createComment(comment)
-        .then(() => {
-          this.setState({ action: 'View' });
-          this.props.fetchUser(user_id);
-          this.props.fetchBusiness(business_id);
-        });
+        .then(() => this.setState({ action: 'View' }));
     }
   }
 
@@ -46,13 +42,8 @@ class CommentForm extends React.Component {
 
   handleCommentDelete(e) {
     e.preventDefault();
-    const { user_id, business_id } = this.props;
-    if (this.props.destroyComment(this.props.comment_id)) {
-      this.setState({ action: 'Create' });
-      this.props.fetchUser(user_id);
-      this.props.fetchBusiness(business_id);
-      this.forceUpdate();
-    }
+    this.props.destroyComment(this.props.comment_id)
+      .then(() => this.setState({ action: 'Create' }));
   }
 
   renderNewForm() {

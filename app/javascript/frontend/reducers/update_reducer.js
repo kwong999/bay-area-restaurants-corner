@@ -12,6 +12,11 @@ import {
   DELETE_VOTE
 } from '../actions/vote_actions';
 
+import {
+  RECEIVE_COMMENT,
+  DELETE_COMMENT
+} from '../actions/comment_actions'
+
 const initialState = {
   updated: true
 }
@@ -22,7 +27,9 @@ const updateReducer = (state = initialState, action) => {
     case RECEIVE_RATE:
     case DELETE_RATE:
     case RECEIVE_VOTE:
-    case DELETE_VOTE:
+    case DELETE_VOTE: 
+    case RECEIVE_COMMENT:
+    case DELETE_COMMENT:
       return { updated: false };
     case STATE_UPDATED:
       return initialState;

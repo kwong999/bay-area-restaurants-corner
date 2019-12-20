@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import ProfileShow from './profile_show';
 import { fetchUser } from '../../actions/user_actions';
 
-const mapStateToProps = (state, { match }) => ({
-  currentUser: state.entities.users[match.params.userId]
-});
+const mapStateToProps = (state, ownProps) => {
+  return ({
+    currentUser: state.entities.users[ownProps.match.params.userId]
+})};
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: (id, args) => dispatch(fetchUser(id, args))

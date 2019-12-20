@@ -30,9 +30,9 @@ export const fetchBusinesses = data => dispatch => {
     .then(businesses => dispatch(receiveBusinesses(businesses)))
 };
 
-export const fetchBusiness = id => dispatch => {
+export const fetchBusiness = (id, data) => dispatch => {
   dispatch(startLoadingBusiness());
-  return APIUtil.fetchBusiness(id)
+  return APIUtil.fetchBusiness(id, data)
     .then(
       businesses => dispatch(receiveBusiness(businesses)),
       error => dispatch(receiveErrors(error.responseJSON))

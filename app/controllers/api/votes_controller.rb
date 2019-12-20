@@ -20,7 +20,7 @@ class Api::VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     @vote.destroy
-    render json: 'success'
+    render 'api/votes/show'
   end
 
   private

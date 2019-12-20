@@ -20,7 +20,7 @@ class Api::RatesController < ApplicationController
   def destroy
     @rate = Rate.find(params[:id])
     @rate.destroy
-    render json: 'success'
+    render 'api/rates/show'
   end
   
   private

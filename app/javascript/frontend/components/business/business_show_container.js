@@ -19,7 +19,7 @@ const mapStateToProps = ({ entities, session, ui }, { match }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchBusiness: id => dispatch(fetchBusiness(id)),
+  fetchBusiness: (id, data) => dispatch(fetchBusiness(id, data)),
   fetchUser: id => dispatch(fetchUser(id)),
   stateUpdated: () => dispatch(stateUpdated())
 });

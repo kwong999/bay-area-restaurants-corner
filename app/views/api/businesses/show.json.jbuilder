@@ -14,14 +14,20 @@ json.business do
   end
 end
 json.comments do
-  @comments.each do |comment|
-    json.set! comment.id do
+  json.set! @business.id do
+    json.array! @comments do |comment|
       json.extract! comment, :id, :body, :user_id, :business_id
       json.extract! comment.user, :username
       json.voting do
         json.voting_result comment.votes.sum(:voting)
         json.voting_counts comment.votes.count(:voting)
       end
+    end
+  end
+  json.current_user ({})
+  if (current_user && @current_user_comments.length > 0)
+    json.current_user do
+      json.extract! @current_user_comments[0], :id, :body, :user_id, :business_id
     end
   end
 end

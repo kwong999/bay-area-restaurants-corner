@@ -6,7 +6,7 @@ class BusinessAll extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      limit: 1
+      limit: 2
     }
   }
   componentDidMount() {

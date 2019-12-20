@@ -6,35 +6,22 @@ import ProfileCommentContainer from './profile_comment_container';
 import ProfileVoteContainer from './profile_vote_container';
 
 class ProfileShow extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchUser(this.props.match.params.userId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.userId !== this.props.match.params.userId) {
-      this.props.fetchUser(this.props.match.params.userId);
-    }
-  }
-
   render() {
     console.log(this.constructor.name);
     console.log(this.props);
-    if (!this.props.currentUser) {
-      console.log('No currentUser'); 
-      return null;
-    }
     const { currentUser } = this.props;
+    let username = (currentUser) ? currentUser.username : "";
+    const { userId } = this.props.match.params;
     return(
       <>
         <h3>
-          {currentUser.username}
+          {username}
         </h3>
         <ul>
-          <Link to={`/user/${currentUser.id}/index`}>Index</Link>
-          <Link to={`/user/${currentUser.id}/rates`}>Rates Record</Link>
-          <Link to={`/user/${currentUser.id}/comments`}>Comments Record</Link>
-          <Link to={`/user/${currentUser.id}/votes`}>Votes Record</Link>
+          <Link to={`/user/${userId}/index`}>Index</Link>
+          <Link to={`/user/${userId}/rates`}>Rates Record</Link>
+          <Link to={`/user/${userId}/comments`}>Comments Record</Link>
+          <Link to={`/user/${userId}/votes`}>Votes Record</Link>
         </ul>
         <Route path='/user/:userId/index' component={ProfileIndexContainer} />
         <Route path='/user/:userId/rates' component={ProfileRateContainer} />

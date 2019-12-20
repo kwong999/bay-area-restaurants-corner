@@ -20,7 +20,7 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render json: 'success'
+    render 'api/comments/show'
   end
   
   private

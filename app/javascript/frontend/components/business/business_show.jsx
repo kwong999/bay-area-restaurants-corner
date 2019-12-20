@@ -9,20 +9,84 @@ import Map from '../map/map';
 class BusinessShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentPage: 1,
+      limit: 2
+    }
   }
 
   componentDidMount() {
-    this.props.fetchBusiness(this.props.businessId);
+    this.props.fetchBusiness(
+      this.props.businessId,
+      { limit: this.state.limit, page: this.state.currentPage }
+    );
     if (this.props.currentUserId) {
       this.props.fetchUser(this.props.currentUserId);
     }
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps) {
     if (!this.props.ui.update.updated) {
-      this.props.fetchBusiness(this.props.businessId);
+      this.props.fetchBusiness(
+        this.props.businessId, 
+        { limit: this.state.limit, page: this.state.currentPage }
+      );
       this.props.fetchUser(this.props.currentUserId);
       this.props.stateUpdated();
+    }
+  }
+
+  handleChangePage(type, num) {
+    let toPage;
+    switch (type) {
+      case 'prev':
+        toPage = this.state.currentPage - 1;
+        break;
+      case 'next':
+        toPage = this.state.currentPage + 1;
+        break;
+      case 'to':
+        toPage = num;
+        break;
+    }
+    return (e) => {
+      e.preventDefault();
+      this.setState({ currentPage: toPage }, () => (
+        this.props.fetchBusiness(
+          this.props.businessId,
+          { limit: this.state.limit, page: this.state.currentPage }
+        )
+      ));
+    }
+  }
+
+  renderPageLine() {
+    if (!this.props.comments[this.props.business.id]) return null;
+    const maxPage = Math.ceil(this.props.business.commentIds.length / this.state.limit);
+    console.log('maxPage:' + maxPage);
+    switch (this.state.currentPage) {
+      case 1:
+        return (
+          <>
+            <p>{this.state.currentPage}/{maxPage}</p>
+            <button onClick={this.handleChangePage('next')}>{'>'}</button>
+          </>
+        )
+      case maxPage:
+        return (
+          <>
+            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
+            <p>{this.state.currentPage}/{maxPage}</p>
+          </>
+        )
+      default:
+        return (
+          <>
+            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
+            <p>{this.state.currentPage}/{maxPage}</p>
+            <button onClick={this.handleChangePage('next')}>{'>'}</button>
+          </>
+        )
     }
   }
 
@@ -85,21 +149,19 @@ class BusinessShow extends React.Component {
     }
   }
 
-  renderCurrentUserReview(currentUserId, comments, users, businessId) {
+  renderCurrentUserReview(currentUserId, comment, businessId) {
     if (!currentUserId) {
       return null;
     }
-    const currentUser = users[currentUserId];
-    const currentUserComment = Object.keys(comments).filter(commentId => currentUser.commentIds.includes(parseInt(commentId)));
-    if (currentUserComment.length > 0) {
+    if (comment.id) {
       return (
         <div className='user-comment'>
           <CommentFormContainer
             action='View'
-            currentComment={comments[currentUserComment[0]].body}
-            user_id={currentUserId}
-            business_id={businessId}
-            comment_id={currentUserComment[0]}
+            currentComment={comment.body}
+            user_id={comment.user_id}
+            business_id={comment.business_id}
+            comment_id={comment.id}
           />
         </div>
       )
@@ -117,10 +179,9 @@ class BusinessShow extends React.Component {
     }
   }
 
-  renderComments(commentIds, comments) {
-    if (!commentIds || !comments) return null;
-    return commentIds.map((id, idx) => {
-      const comment = comments[parseInt(id)];
+  renderComments(comments) {
+    if (!comments) return null;
+    return comments.map( comment => {
       const votingResult = comment.voting.voting_result;
       const votingCounts = comment.voting.voting_counts;
       let voteLine;
@@ -136,11 +197,13 @@ class BusinessShow extends React.Component {
         }
       }
       return (
-        <li key={idx}>  
+        <li key={comment.id}>  
           <p>{comment.body}</p>
-          <p className='comment-author'>by {comment.username}</p>
+          <p className='comment-author'>
+            by <Link to={`/user/${comment.user_id}/index`} props={comment.username}>{comment.username}</Link>
+          </p>
           <p className='vote-detail'>{voteLine}</p>
-          {this.renderVoteOptions(parseInt(id))}
+          {this.renderVoteOptions(comment.id)}
         </li>
       );
     })
@@ -177,7 +240,9 @@ class BusinessShow extends React.Component {
     if (this.props.currentUserId) {
       if (!this.props.users[this.props.currentUserId].commentIds) return null;
     }
+    console.log(this.constructor.name);
     console.log(this.props);
+    console.log(this.state);
     const { business, comments, rates, currentUserId, users } = this.props;
     return (
       <div className='business-single'>
@@ -197,13 +262,17 @@ class BusinessShow extends React.Component {
             </div>
             <div>
               <h4>Reviews</h4>
-              {this.renderCurrentUserReview(currentUserId, comments, users, business.id)}
+              {this.renderCurrentUserReview(currentUserId, comments.current_user, business.id)}
             </div>
           </div>
           <MiddleLine />
+          <h4>Reviews</h4>
           <ul className='business-comments'>
-            {this.renderComments(business.commentIds, comments)}
+            {this.renderComments(comments[business.id])}
           </ul>
+          <div className='page-line'>
+            {this.renderPageLine()}
+          </div>
         </div>
         <div className='business-single-right'>
           <h4>Location</h4>

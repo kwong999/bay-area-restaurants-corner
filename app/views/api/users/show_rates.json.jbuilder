@@ -5,3 +5,4 @@ json.rates do
     json.extract! rate, :id, :rating, :business_id, :business_name, :updated_at
   end
 end
+json.count @count
