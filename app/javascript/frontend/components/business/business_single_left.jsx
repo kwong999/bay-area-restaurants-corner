@@ -5,6 +5,8 @@ import RateSelectorContainer from '../rate/rate_selector_container';
 import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
 import Map from '../map/map';
+import BusinessLong from './business_long';
+import BusinessOperatingHours from './business_operating_hours';
 
 class BusinessSingleLeft extends React.Component {
   constructor(props) {
@@ -92,27 +94,7 @@ class BusinessSingleLeft extends React.Component {
   }
 
   renderBusinessLongDetail() {
-    const { business } = this.props;
-    const address = (business.address.address_first) ? `
-        ${business.address.address_first} ${business.address.address_second},
-        ${business.address.street},
-        ${business.address.city}, 
-        ${business.address.state} ${business.address.zip}` : 'Not Provided';
-    let rating = '-';
-    if (business.rating.rating_avg !== '-') {
-      rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
-      if (business.rating.rating_counts > 1) {
-        rating = rating + 's';
-      }
-    }
-    return (
-      <ul className='business-long-detail'>
-        <li>Rating: {rating}</li>
-        <li>Description: {business.description}</li>
-        <li>Phone: {business.phone}</li>
-        <li>Address: {address}</li>
-      </ul>
-    )
+    return <BusinessLong business={this.props.business} />
   }
 
   renderOperatingHours(hour) {
@@ -248,11 +230,11 @@ class BusinessSingleLeft extends React.Component {
     return (
       <div className='business-single-left'>
         <h3>{business.name}</h3>
-        {this.renderBusinessLongDetail()}
+        <BusinessLong business={this.props.business} />
         <MiddleLine />
         <h4>Operating Hours</h4>
         <ul className='business-operating-hours'>
-          {this.renderOperatingHours(business.hour)}
+          <BusinessOperatingHours hour={business.hour} />
         </ul>
         <MiddleLine />
         <div className='current-user-rate-comment'>
