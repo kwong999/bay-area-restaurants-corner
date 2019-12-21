@@ -61,6 +61,7 @@ class BusinessAll extends React.Component {
       case 1:
         return (
           <>
+            <button id='hidden'>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
             <button onClick={this.handleChangePage('next')}>{'>'}</button>
           </>
@@ -70,6 +71,7 @@ class BusinessAll extends React.Component {
           <>
             <button onClick={this.handleChangePage('prev')}>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
+            <button id='hidden'>{'>'}</button>
           </>
         )
       default:
@@ -92,9 +94,9 @@ class BusinessAll extends React.Component {
           <ul className='business-list'>
             {this.renderBusinessList()}
           </ul>
-        </div>
-        <div className='page-line'>
-          {this.renderPageLine()}
+          <div id='page-line'>
+            {this.renderPageLine()}
+          </div>
         </div>
       </>
     )

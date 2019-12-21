@@ -71,6 +71,7 @@ class BusinessSingleLeft extends React.Component {
       case 1:
         return (
           <>
+            <button id='hidden'>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
             <button onClick={this.handleChangePage('next')}>{'>'}</button>
           </>
@@ -80,6 +81,7 @@ class BusinessSingleLeft extends React.Component {
           <>
             <button onClick={this.handleChangePage('prev')}>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
+            <button id='hidden'>{'>'}</button>
           </>
         )
       default:
@@ -233,9 +235,7 @@ class BusinessSingleLeft extends React.Component {
         <BusinessLong business={this.props.business} />
         <MiddleLine />
         <h4>Operating Hours</h4>
-        <ul className='business-operating-hours'>
-          <BusinessOperatingHours hour={business.hour} />
-        </ul>
+        <BusinessOperatingHours hour={business.hour} />
         <MiddleLine />
         <div className='current-user-rate-comment'>
           <div>
@@ -252,7 +252,7 @@ class BusinessSingleLeft extends React.Component {
         <ul className='business-comments'>
           {this.renderComments(comments[business.id])}
         </ul>
-        <div className='page-line'>
+        <div id='page-line'>
           {this.renderPageLine()}
         </div>
       </div>

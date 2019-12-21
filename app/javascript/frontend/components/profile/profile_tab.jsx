@@ -52,6 +52,7 @@ class ProfileTab extends React.Component {
       case 1:
         return (
           <>
+            <button id='hidden'>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
             <button onClick={this.handleChangePage('next')}>{'>'}</button>
           </>
@@ -61,6 +62,7 @@ class ProfileTab extends React.Component {
           <>
             <button onClick={this.handleChangePage('prev')}>{'<'}</button>
             <p>{this.state.currentPage}/{maxPage}</p>
+            <button id='hidden'>{'>'}</button>
           </>
         )
       default:
@@ -130,7 +132,7 @@ class ProfileTab extends React.Component {
                 <RenderRates rates={this.props.currentUser.rates} />
               </ul>
             </div>
-            <div className='page-line'>
+            <div id='page-line'>
               {this.renderPageLine()}
             </div>
           </>
@@ -145,7 +147,7 @@ class ProfileTab extends React.Component {
                 <RenderComments comments={this.props.currentUser.comments} />
               </ul>
             </div>
-            <div className='page-line'>
+            <div id='page-line'>
               {this.renderPageLine()}
             </div>
           </>
@@ -160,7 +162,7 @@ class ProfileTab extends React.Component {
                 <RenderVotes votes={this.props.currentUser.votes} />
               </ul>
             </div>
-            <div className='page-line'>
+            <div id='page-line'>
               {this.renderPageLine()}
             </div>
           </>

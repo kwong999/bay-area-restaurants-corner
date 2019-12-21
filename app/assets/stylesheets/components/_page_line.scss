@@ -1,0 +1,12 @@
+#page-line {
+  display: flex;
+  flex-direction: row;
+}
+
+#page-line > * {
+  margin-right: 10px;
+}
+
+#page-line #hidden {
+  visibility: hidden;
+}
