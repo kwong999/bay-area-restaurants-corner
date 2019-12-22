@@ -106,7 +106,7 @@ a3 = Address.create!({
   state: "CA",
   zip: "94545",
   lat: 37.6478222,
-  lng:  -122.1065811
+  lng: -122.1065811
 })
 
 h3 = Hour.create!({
@@ -118,6 +118,209 @@ h3 = Hour.create!({
   hours_fri: "1100-2300",
   hours_sat: "1100-2300",
   hours_sun: "1100-2200"
+})
+
+b4 = Business.create!({
+  name: "Buffalo Wild Wings",
+  description: "Wings restaurant",
+  phone: "5107826733"
+})
+
+a4 = Address.create!({
+  business_id: b4.id,
+  address_first: "24542",
+  address_second: "",
+  street: "Hesperian Blvd",
+  city: "Hayward",
+  state: "CA",
+  zip: "94545",
+  lat: 37.650047, 
+  lng: -122.1076861
+})
+
+h4 = Hour.create!({
+  business_id: b4.id,
+  hours_mon: "1100-1400",
+  hours_tue: "1100-1400",
+  hours_wed: "1100-1400",
+  hours_thu: "1100-1400",
+  hours_fri: "1100-1400",
+  hours_sat: "0900-1400",
+  hours_sun: "0900-1400"
+})
+
+b5 = Business.create!({
+  name: "Applebee's Grill Bar",
+  description: "American restaurant",
+  phone: "5107826400"
+})
+
+a5 = Address.create!({
+  business_id: b5.id,
+  address_first: "24041",
+  address_second: "",
+  street: "Southland Dr",
+  city: "Hayward",
+  state: "CA",
+  zip: "94545",
+  lat: 37.6543319, 
+  lng: -122.1057123
+})
+
+h5 = Hour.create!({
+  business_id: b5.id,
+  hours_mon: "1100-0000",
+  hours_tue: "1100-0000",
+  hours_wed: "1100-0000",
+  hours_thu: "1100-0000",
+  hours_fri: "1100-0000",
+  hours_sat: "1100-0000",
+  hours_sun: "1100-0000"
+})
+
+b6 = Business.create!({
+  name: "Panera Bread",
+  description: "Sandwich Store, Bakery",
+  phone: "5107320279"
+})
+
+a6 = Address.create!({
+  business_id: b6.id,
+  address_first: "24133",
+  address_second: "",
+  street: "Southland Dr",
+  city: "Hayward",
+  state: "CA",
+  zip: "94545",
+  lat: 37.6537968, 
+  lng: -122.1053962
+})
+
+h6 = Hour.create!({
+  business_id: b6.id,
+  hours_mon: "0600-2130",
+  hours_tue: "0600-2130",
+  hours_wed: "0600-2130",
+  hours_thu: "0600-2130",
+  hours_fri: "0600-2200",
+  hours_sat: "0600-2200",
+  hours_sun: "0700-2100"
+})
+
+b7 = Business.create!({
+  name: "Panda Express",
+  description: "Chinese restaurant",
+  phone: "5107326834"
+})
+
+a7 = Address.create!({
+  business_id: b7.id,
+  address_first: "24387",
+  address_second: "",
+  street: "Southland Dr",
+  city: "Hayward",
+  state: "CA",
+  zip: "94545",
+  lat: 37.6524929, 
+  lng: -122.104328
+})
+
+h7 = Hour.create!({
+  business_id: b7.id,
+  hours_mon: "1000-2130",
+  hours_tue: "1000-2130",
+  hours_wed: "-",
+  hours_thu: "1000-2130",
+  hours_fri: "1000-2130",
+  hours_sat: "1030-2130",
+  hours_sun: "1100-2130"
+})
+
+b8 = Business.create!({
+  name: "Tomodachi Sushi Bistro Restaurant",
+  description: "Japanese restaurant, Sushi restaurant",
+  phone: "5109403800"
+})
+
+a8 = Address.create!({
+  business_id: b8.id,
+  address_first: "24123",
+  address_second: "",
+  street: "Hesperian Blvd",
+  city: "Hayward",
+  state: "CA",
+  zip: "94545",
+  lat: 37.6515681, 
+  lng: -122.10985
+})
+
+h8 = Hour.create!({
+  business_id: b8.id,
+  hours_mon: "1130-1430, 1730-2130",
+  hours_tue: "1130-1430, 1730-2130",
+  hours_wed: "1130-1430, 1730-2130",
+  hours_thu: "1130-1430, 1730-2130",
+  hours_fri: "1130-1430, 1730-2200",
+  hours_sat: "1130-1430, 1700-2200",
+  hours_sun: "1730-2130"
+})
+
+b9 = Business.create!({
+  name: "Starbucks",
+  description: "Coffee Shop",
+  phone: "5102939044"
+})
+
+a9 = Address.create!({
+  business_id: b9.id,
+  address_first: "23948",
+  address_second: "",
+  street: "Hesperian Blvd",
+  city: "Hayward",
+  state: "CA",
+  zip: "94541",
+  lat: 37.6541461, 
+  lng: -122.1103261
+})
+
+h9 = Hour.create!({
+  business_id: b9.id,
+  hours_mon: "0400-2100",
+  hours_tue: "0400-2100",
+  hours_wed: "-",
+  hours_thu: "0400-2100",
+  hours_fri: "0400-2200",
+  hours_sat: "0400-2100",
+  hours_sun: "0530-2030"
+})
+
+b10 = Business.create!({
+  name: "Taco Bell",
+  description: "Fast food restaurant",
+  phone: "5108877785"
+})
+
+a10 = Address.create!({
+  business_id: b10.id,
+  address_first: "215",
+  address_second: "",
+  street: "W Jackson St",
+  city: "Hayward",
+  state: "CA",
+  zip: "94544",
+  lat: 37.6527456, 
+  lng: -122.0899949
+})
+
+h10 = Hour.create!({
+  business_id: b10.id,
+  hours_mon: "0000-0000",
+  hours_tue: "0000-0000",
+  hours_wed: "-",
+  hours_thu: "0000-0000",
+  hours_fri: "0000-0000",
+  hours_sat: "0000-0000",
+  hours_sun: "0000-0000"
 })
 
 c1 = Comment.create!({
