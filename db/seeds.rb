@@ -13,25 +13,16 @@ Hour.delete_all
 Comment.delete_all
 Rate.delete_all
 
-u1 = User.create!({
-  username: ENV['DB_SEED_U1'],
-  password: ENV['DB_SEED_P1']
-})
-
-u2 = User.create!({
-  username: ENV['DB_SEED_U2'],
-  password: ENV['DB_SEED_P2']
-})
-
-u3 = User.create!({
-  username: ENV['DB_SEED_U3'],
-  password: ENV['DB_SEED_P3']
-})
-
-u4 = User.create!({
-  username: ENV['DB_SEED_U4'],
-  password: ENV['DB_SEED_P4']
-})
+u1 = User.create!({ username: ENV['DB_SEED_U1'], password: ENV['DB_SEED_P1'] })
+u2 = User.create!({ username: ENV['DB_SEED_U2'], password: ENV['DB_SEED_P2'] })
+u3 = User.create!({ username: ENV['DB_SEED_U3'], password: ENV['DB_SEED_P3'] })
+u4 = User.create!({ username: ENV['DB_SEED_U4'], password: ENV['DB_SEED_P4'] })
+u5 = User.create!({ username: ENV['DB_SEED_U5'], password: ENV['DB_SEED_P5'] })
+u6 = User.create!({ username: ENV['DB_SEED_U6'], password: ENV['DB_SEED_P6'] })
+u7 = User.create!({ username: ENV['DB_SEED_U7'], password: ENV['DB_SEED_P7'] })
+u8 = User.create!({ username: ENV['DB_SEED_U8'], password: ENV['DB_SEED_P8'] })
+u9 = User.create!({ username: ENV['DB_SEED_U9'], password: ENV['DB_SEED_P9'] })
+u10 = User.create!({ username: ENV['DB_SEED_U10'], password: ENV['DB_SEED_P10'] })
 
 b1 = Business.create!({
   name: "McDonald's",
@@ -323,98 +314,45 @@ h10 = Hour.create!({
   hours_sun: "0000-0000"
 })
 
-c1 = Comment.create!({
-  user_id: u2.id,
-  business_id: b1.id,
-  body: 'Pretty Good'
-})
+c1 = Comment.create!({ user_id: u2.id, business_id: b1.id, body: 'Pretty Good' })
+c2 = Comment.create!({ user_id: u2.id, business_id: b2.id, body: 'A bit expensive' })
+c3 = Comment.create!({ user_id: u2.id, business_id: b3.id, body: 'Better than I expect' })
+c4 = Comment.create!({ user_id: u2.id, business_id: b4.id, body: 'Fair price' })
+c5 = Comment.create!({ user_id: u2.id, business_id: b5.id, body: 'Recommend' })
+c6 = Comment.create!({ user_id: u3.id, business_id: b1.id, body: 'Food are cold' })
+c7 = Comment.create!({ user_id: u3.id, business_id: b2.id, body: 'No fresh' })
+c8 = Comment.create!({ user_id: u3.id, business_id: b3.id, body: 'Good service' })
+c9 = Comment.create!({ user_id: u4.id, business_id: b1.id, body: 'Food quality needs improvement' })
+c10 = Comment.create!({ user_id: u4.id, business_id: b2.id, body: 'Queue too long' })
 
-c2 = Comment.create!({
-  user_id: u2.id,
-  business_id: b2.id,
-  body: 'A bit expensive'
-})
+r1 = Rate.create!({ user_id: u2.id, business_id: b1.id, rating: 3.0 })
+r2 = Rate.create!({ user_id: u2.id, business_id: b2.id, rating: 2.5 })
+r3 = Rate.create!({ user_id: u2.id, business_id: b3.id, rating: 3.5 })
+r4 = Rate.create!({ user_id: u2.id, business_id: b4.id, rating: 3.0 })
+r5 = Rate.create!({ user_id: u2.id, business_id: b5.id, rating: 4.0 })
+r6 = Rate.create!({ user_id: u3.id, business_id: b1.id, rating: 2.0 })
+r7 = Rate.create!({ user_id: u3.id, business_id: b2.id, rating: 2.0 })
+r8 = Rate.create!({ user_id: u3.id, business_id: b3.id, rating: 4.0 })
+r9 = Rate.create!({ user_id: u4.id, business_id: b1.id, rating: 1.0 })
+r10 = Rate.create!({ user_id: u4.id, business_id: b2.id, rating: 2.5 })
 
-c3 = Comment.create!({
-  user_id: u3.id,
-  business_id: b1.id,
-  body: 'Better than I expect'
-})
-
-c4 = Comment.create!({
-  user_id: u2.id,
-  business_id: b3.id,
-  body: 'Very Good'
-})
-
-c5 = Comment.create!({
-  user_id: u4.id,
-  business_id: b1.id,
-  body: 'Not bad'
-})
-
-r1 = Rate.create!({
-  user_id: u2.id,
-  business_id: b1.id,
-  rating: 3.0
-})
-
-r2 = Rate.create!({
-  user_id: u2.id,
-  business_id: b2.id,
-  rating: 2.5
-})
-
-r3 = Rate.create!({
-  user_id: u3.id,
-  business_id: b1.id,
-  rating: 4.0
-})
-
-r4 = Rate.create!({
-  user_id: u2.id,
-  business_id: b3.id,
-  rating: 4.0
-})
-
-c4 = Comment.create!({
-  user_id: u3.id,
-  business_id: b2.id,
-  body: 'Excellent'
-})
-
-r4 = Rate.create!({
-  user_id: u3.id,
-  business_id: b2.id,
-  rating: 5.0
-})
-
-v1 = Vote.create!({
-  user_id: u2.id,
-  comment_id: c1.id,
-  voting: 1
-})
-
-v2 = Vote.create!({
-  user_id: u2.id,
-  comment_id: c4.id,
-  voting: -1
-})
-
-v3 = Vote.create!({
-  user_id: u3.id,
-  comment_id: c1.id,
-  voting: 1
-})
-
-v4 = Vote.create!({
-  user_id: u3.id,
-  comment_id: c4.id,
-  voting: 1
-})
-
-v5 = Vote.create!({
-  user_id: u2.id,
-  comment_id: c3.id,
-  voting: 1
-})
+v1 = Vote.create!({ user_id: u2.id, comment_id: c1.id, voting: 1 })
+v2 = Vote.create!({ user_id: u2.id, comment_id: c2.id, voting: 1 })
+v3 = Vote.create!({ user_id: u2.id, comment_id: c3.id, voting: 1 })
+v4 = Vote.create!({ user_id: u2.id, comment_id: c4.id, voting: 1 })
+v5 = Vote.create!({ user_id: u2.id, comment_id: c5.id, voting: 1 })
+v6 = Vote.create!({ user_id: u2.id, comment_id: c6.id, voting: -1 })
+v7 = Vote.create!({ user_id: u2.id, comment_id: c7.id, voting: -1 })
+v8 = Vote.create!({ user_id: u2.id, comment_id: c8.id, voting: 1 })
+v9 = Vote.create!({ user_id: u2.id, comment_id: c9.id, voting: -1 })
+v10 = Vote.create!({ user_id: u2.id, comment_id: c10.id, voting: -1 })
+v11 = Vote.create!({ user_id: u3.id, comment_id: c1.id, voting: -1 })
+v12 = Vote.create!({ user_id: u3.id, comment_id: c6.id, voting: 1 })
+v13 = Vote.create!({ user_id: u3.id, comment_id: c8.id, voting: 1 })
+v14 = Vote.create!({ user_id: u4.id, comment_id: c1.id, voting: -1 })
+v15 = Vote.create!({ user_id: u4.id, comment_id: c9.id, voting: 1 })
+v16 = Vote.create!({ user_id: u4.id, comment_id: c10.id, voting: 1 })
+v17 = Vote.create!({ user_id: u5.id, comment_id: c1.id, voting: -1 })
+v18 = Vote.create!({ user_id: u6.id, comment_id: c1.id, voting: -1 })
+v19 = Vote.create!({ user_id: u7.id, comment_id: c1.id, voting: -1 })
+v20 = Vote.create!({ user_id: u8.id, comment_id: c1.id, voting: -1 })
