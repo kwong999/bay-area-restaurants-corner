@@ -23,7 +23,7 @@ class SearchBar extends React.Component{
 
   handleReset(e) {
     e.preventDefault();
-    this.props.fetchSearchResult('');
+    this.props.fetchSearchReset('');
     this.setState({searchLine: ''});
   }
 
@@ -45,7 +45,7 @@ class SearchBar extends React.Component{
           </label>
           <button onClick={this.handleSubmit}><Link to='/'>Search</Link></button>
         </form>
-        <div><p>{currentSearch}</p> {resetButton}</div>
+        <div><p className={(this.props.search.length > 0) ? 'active' : 'hidden'}>{currentSearch}</p> {resetButton}</div>
       </div>
     )
   };

@@ -12,17 +12,15 @@
 }
 
 .profile-nav-bar {
-  background: rgb(255, 209, 191);
+  background: rgb(255, 209, 191);  
+  font-family: $sans-serif;
 }
 .profile-nav-bar ul {
   display: flex;
   flex-direction: row;
-  outline: 1px red solid;
 }
 
 .profile-nav-bar li {
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 5px 10px;
 }
 
@@ -32,7 +30,6 @@
 
 .profile-nav-bar .active, .profile-nav-bar .active:hover {
   background:  rgb(59, 0, 0);
-  font-weight: bold;
   color:white;
 }
 
@@ -43,8 +40,22 @@
 }
 
 .profile-container .list ul {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 16px;
   font-family: $sans-serif;
+}
+
+.profile-container .list li li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.profile-container .list a {
+  font-weight: bold;
+  color: rgb(0, 115, 187);
+}
+
+.profile-container .list a:hover {
+  border-bottom: rgb(0, 115, 187) 1px solid;
 }

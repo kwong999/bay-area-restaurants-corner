@@ -8,7 +8,7 @@ function RenderVotes({ votes }) {
       <ul className='vote'>
         <li>Business Name: <Link to={`/business/${vote.business_id}`}>{vote.business_name}</Link></li>
         <li>Comment: {vote.comment_body}</li>
-        <li>Author: {vote.comment_author}</li>
+        <li>Author: <Link to={`/user/${vote.comment_author_id}/index`}>{vote.comment_author}</Link></li>
         <li>Vote: {vote_line}</li>
       </ul>
     </li>

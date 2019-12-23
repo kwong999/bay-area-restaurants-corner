@@ -80,6 +80,7 @@ class Api::UsersController < ApplicationController
       .map{ |vote| vote.as_json.merge({
         "comment_body" => vote.comment.body,
         "comment_author" => vote.comment.user.username,
+        "comment_author_id" => vote.comment.user_id,
         "business_id" => vote.comment.business.id,
         "business_name" => vote.comment.business.name
         }).symbolize_keys }

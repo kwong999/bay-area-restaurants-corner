@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import BusinessIndexContainer from './business_index_container';
 import BusinessAllContainer from './business_all_container';
+import BusinessShow from './business_show';
 
 class BusinessMain extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class BusinessMain extends React.Component {
           <Switch>
             <Route exact path='/' component={BusinessIndexContainer} />
             <Route exact path='/all' component={BusinessAllContainer} />
+            <Route exact path='/business/:businessId' component={BusinessShow} />
           </Switch>
         </Route>
       </>

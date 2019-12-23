@@ -13,3 +13,9 @@ export const fetchSearchResult = search => dispatch => {
   return APIUtil.fetchBusinesses({ search: search , limit: 3, page: 1})
     .then(businesses => dispatch(receiveBusinesses(businesses)))
 };
+
+export const fetchSearchReset = search => dispatch => {
+  dispatch(receiveSearch(search));
+  return APIUtil.fetchBusinesses({ random: true })
+    .then(businesses => dispatch(receiveBusinesses(businesses)))
+};

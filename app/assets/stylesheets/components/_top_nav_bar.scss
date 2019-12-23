@@ -1,6 +1,7 @@
 .greeting {
   //background: lightsalmon;
   margin: auto;
+  padding-top: 20px;
   display: block;
   font-size: calc(0.75em + 0.5vw);
   font-family: $sans-serif;
@@ -15,7 +16,6 @@
   justify-content: right;
 }
 .greeting > nav > div > * {
-  margin-top: 20px;
   margin-left: 20px;
   padding: 5px;
 }

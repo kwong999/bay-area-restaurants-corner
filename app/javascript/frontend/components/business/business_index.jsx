@@ -1,5 +1,6 @@
 import React from 'react';
 import BusinessShort from './business_short';
+import SearchBarContainer from '../search/search_bar_container';
 
 class BusinessIndex extends React.Component {
   constructor(props) {
@@ -102,6 +103,7 @@ class BusinessIndex extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business'>
+        <SearchBarContainer />
         <h3>{this.renderTitle()}</h3>
         <ul className='business-list'>
           {this.renderBusinessList()}

@@ -1,15 +1,13 @@
 .business-main-nav-bar {
   background: rgb(255, 209, 191);
+  font-family: $sans-serif;
 }
 .business-main-nav-bar ul {
   display: flex;
   flex-direction: row;
-  outline: 1px red solid;
 }
 
 .business-main-nav-bar li {
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 5px 10px;
 }
 
@@ -19,7 +17,6 @@
 
 .business-main-nav-bar .active, .business-main-nav-bar .active:hover {
   background:  rgb(59, 0, 0);
-  font-weight: bold;
   color:white;
 }
 
@@ -36,10 +33,6 @@
   font-weight: bold;
 }
 
-.business-list {
-  margin-top: 20px;
-}
-
 .business-list > li {
   margin-top: 20px;
 }
@@ -51,10 +44,11 @@
   font-family: $sans-serif;
 }
 
-.business-short-detail > :first-child > a {
+.business-single a {
   font-weight: bold;
   color: rgb(0, 115, 187);
 }
-.business-short-detail > :first-child > a:hover {
+
+.business-single a:hover {
   border-bottom: rgb(0, 115, 187) 1px solid;
 }
