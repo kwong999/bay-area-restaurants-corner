@@ -8,8 +8,8 @@ class BusinessShow extends React.Component {
     console.log(this.props);
     return (
       <div className='business-single'>
-        <BusinessSingleLeftContainer businessId={this.props.businessId}/>
-        <BusinessSingleRightContainer businessId={this.props.businessId} />
+        <BusinessSingleLeftContainer businessId={this.props.match.params.businessId}/>
+        <BusinessSingleRightContainer businessId={this.props.match.params.businessId} />
       </div>
     )
   };

@@ -6,17 +6,12 @@ class BusinessAll extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      limit: 2
+      limit: 3
     }
   }
+
   componentDidMount() {
     this.props.fetchBusinesses({ limit: this.state.limit, page: this.state.currentPage});
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    console.log(this.props);
-    console.log(this.state);
   }
 
   handleChangePage(type, num) {
@@ -56,7 +51,7 @@ class BusinessAll extends React.Component {
   renderPageLine() {
     const maxPage = Math.ceil(this.props.businesses.count / this.state.limit);
     console.log('maxPage:' + maxPage);
-    if (maxPage === 1) return null;
+    if (maxPage <= 1) return null;
     switch(this.state.currentPage) {
       case 1:
         return (

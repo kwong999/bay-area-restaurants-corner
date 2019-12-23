@@ -1,5 +1,5 @@
 .greeting {
-  background: lightsalmon;
+  //background: lightsalmon;
   margin: auto;
   display: block;
   font-size: calc(0.75em + 0.5vw);
@@ -23,6 +23,7 @@
   border-radius: 10px;
   border: 1px solid black;
   padding: 5px;
+  background: rgba(230, 230, 250, 0.7);
 }
 
 .greeting > nav > div > button:hover{

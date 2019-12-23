@@ -4,7 +4,6 @@ import CommentFormContainer from '../comment/comment_form_container';
 import RateSelectorContainer from '../rate/rate_selector_container';
 import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
-import Map from '../map/map';
 import BusinessLong from './business_long';
 import BusinessOperatingHours from './business_operating_hours';
 
@@ -66,7 +65,7 @@ class BusinessSingleLeft extends React.Component {
     if (!this.props.comments[this.props.business.id]) return null;
     const maxPage = Math.ceil(this.props.business.commentIds.length / this.state.limit);
     console.log('maxPage:' + maxPage);
-    if (maxPage === 1) return null;
+    if (maxPage <= 1) return null;
     switch (this.state.currentPage) {
       case 1:
         return (
@@ -107,7 +106,9 @@ class BusinessSingleLeft extends React.Component {
   }
 
   renderRatingSection(currentUserId, currentUserRates, businessId) {
-    if (!currentUserId) return null;
+    if (!currentUserId) {
+      return this.renderLoginSignUpLine('rate');
+    }
     if (!currentUserRates) {
       return (
         <div className='rating-section'>
@@ -136,7 +137,7 @@ class BusinessSingleLeft extends React.Component {
 
   renderCurrentUserReview(currentUserId, comment, businessId) {
     if (!currentUserId) {
-      return null;
+      return this.renderLoginSignUpLine('comment');
     }
     if (comment.id) {
       return (
@@ -162,6 +163,14 @@ class BusinessSingleLeft extends React.Component {
         </div>
       )
     }
+  }
+
+  renderLoginSignUpLine(text) {
+    return (
+      <p className='login-sign-up-line'>
+        <Link to='/login'>Login</Link> / <Link to='/signup'>Sign up</Link> to {text}
+      </p>
+    )
   }
 
   renderComments(comments) {
@@ -196,7 +205,8 @@ class BusinessSingleLeft extends React.Component {
 
   renderVoteOptions(commentId){
     if (!this.props.currentUserId) return null;
-    const vote = this.props.votes[this.props.currentUserId][commentId]
+    if (!this.props.votes[this.props.currentUserId]) return null;
+    const vote = this.props.votes[this.props.currentUserId][commentId];
     let action;
     if (!vote) {
       action = 'Vote';

@@ -1,7 +1,7 @@
 import React from 'react';
 import RenderRates from './rates';
-import RenderComments from './comment';
-import RenderVotes from './vote';
+import RenderComments from './comments';
+import RenderVotes from './votes';
 import MiddleLine from '../ui/middle_line';
 
 class ProfileTab extends React.Component {
@@ -9,7 +9,7 @@ class ProfileTab extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      limit: 2
+      limit: 3
     }
   }
 
@@ -47,7 +47,7 @@ class ProfileTab extends React.Component {
   renderPageLine() {
     const maxPage = Math.ceil(this.props.currentUser.count / this.state.limit);
     console.log('maxPage:' + maxPage);
-    if (maxPage === 1) return null;
+    if (maxPage <= 1) return null;
     switch (this.state.currentPage) {
       case 1:
         return (
@@ -107,14 +107,14 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.comments) return null;
         return (
           <>
-            <div className='recent-rates'>
+            <div className='list'>
               <h4>Recent Rates</h4>
               <ul>
                 <RenderRates rates={this.props.currentUser.rates} />
               </ul>
             </div>
             <MiddleLine />
-            <div className='recent-comments'>
+            <div className='list'>
               <h4>Recent Comments</h4>
               <ul>
                 <RenderComments comments={this.props.currentUser.comments} />
@@ -126,7 +126,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.rates) return null;
         return (
           <>
-            <div className='rates-history'>
+            <div className='list'>
               <h4>Rates History</h4>
               <ul>
                 <RenderRates rates={this.props.currentUser.rates} />
@@ -141,7 +141,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.comments) return null;
         return (
           <>
-            <div className='comments-history'>
+            <div className='list'>
               <h4>Comments History</h4>
               <ul>
                 <RenderComments comments={this.props.currentUser.comments} />
@@ -156,7 +156,7 @@ class ProfileTab extends React.Component {
         if (!this.props.currentUser.votes) return null;
         return (
           <>
-            <div className='votes-history'>
+            <div className='list'>
               <h4>Votes History</h4>
               <ul>
                 <RenderVotes votes={this.props.currentUser.votes} />

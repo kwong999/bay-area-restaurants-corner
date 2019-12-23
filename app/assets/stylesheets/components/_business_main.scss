@@ -1,7 +1,33 @@
-.business {
+.business-main-nav-bar {
+  background: rgb(255, 209, 191);
+}
+.business-main-nav-bar ul {
+  display: flex;
+  flex-direction: row;
+  outline: 1px red solid;
+}
+
+.business-main-nav-bar li {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
+.business-main-nav-bar li:hover {
+  background: lightsalmon;
+}
+
+.business-main-nav-bar .active, .business-main-nav-bar .active:hover {
+  background:  rgb(59, 0, 0);
+  font-weight: bold;
+  color:white;
+}
+
+.business > *:not(.middle-line) {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .business > h3 {

@@ -6,7 +6,7 @@ class BusinessShort extends React.Component {
     const { business } = this.props;
     let rating = '-';
     if (business.rating.rating_avg !== '-') {
-      rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
+      rating = `${parseFloat(business.rating.rating_avg).toFixed(2)} by ${business.rating.rating_counts} user`;
       if (business.rating.rating_counts > 1) {
         rating = rating + 's';
       }

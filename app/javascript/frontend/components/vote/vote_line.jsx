@@ -11,7 +11,7 @@ class VoteLine extends React.Component {
   handleClick(type) {
     return (e) => {
       e.preventDefault();
-      const { user_id, business_id, comment_id } = this.props
+      const { user_id, comment_id } = this.props
       const vote = {};
       vote.user_id = user_id;
       vote.comment_id = comment_id;

@@ -10,7 +10,7 @@ class BusinessLong extends React.Component {
         ${business.address.state} ${business.address.zip}` : 'Not Provided';
     let rating = '-';
     if (business.rating.rating_avg !== '-') {
-      rating = `${business.rating.rating_avg} by ${business.rating.rating_counts} user`;
+      rating = `${parseFloat(business.rating.rating_avg).toFixed(2)} by ${business.rating.rating_counts} user`;
       if (business.rating.rating_counts > 1) {
         rating = rating + 's';
       }

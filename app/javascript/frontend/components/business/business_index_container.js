@@ -9,7 +9,7 @@ const mapStateToProps = ({ entities, ui }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchBusinesses: search => dispatch(fetchBusinesses(search))
+  fetchBusinesses: data => dispatch(fetchBusinesses(data))
 });
 
 export default connect(
