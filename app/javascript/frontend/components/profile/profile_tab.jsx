@@ -95,11 +95,7 @@ class ProfileTab extends React.Component {
   }
 
   render() {
-    console.log(this.constructor.name);
-    console.log(this.props);
     if (!this.props.currentUser) return null;
-    console.log('this.state:');
-    console.log(this.state);
     switch (this.props.type) {
       case 'index':
         if (!this.props.currentUser.rates) return null;

@@ -28,8 +28,6 @@ class BusinessMain extends React.Component {
     }
   }
   render() {
-    console.log(this.constructor.name);
-    console.log(this.props);
     return(
       <>
         <nav className='business-main-nav-bar'>

@@ -9,8 +9,6 @@ class BusinessSingleRight extends React.Component {
   render() {
     if (!this.props.business) return null;
     if (!this.props.business.pos) return null;
-    console.log(this.constructor.name);
-    console.log(this.props);
     return (
       <div className='business-single-right'>
         <h4>Location</h4>

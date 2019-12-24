@@ -8,8 +8,6 @@ import { fetchSearchResult } from '../frontend/actions/search_actions'
 import { fetchUser } from '../frontend/actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("currentUser: ");
-  console.log(window.currentUser);
   let store;
   if (window.currentUser) {
     const { currentUser } = window;
@@ -28,11 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   //TEST START
-  window.dispatch = store.dispatch;
-  window.getState = store.getState;
-  window.fetchBusinesses = fetchBusinesses;
-  window.fetchSearchResult = fetchSearchResult;
-  window.fetchUser = fetchUser;
+  if (process.env.NODE_ENV === `development`) {
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
+    window.fetchBusinesses = fetchBusinesses;
+    window.fetchSearchResult = fetchSearchResult;
+    window.fetchUser = fetchUser;
+  }
   //TEST END
   ReactDOM.render(<Root store={store}/>, document.getElementById('root'))
 });

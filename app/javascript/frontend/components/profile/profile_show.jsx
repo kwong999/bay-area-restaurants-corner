@@ -22,8 +22,6 @@ class ProfileShow extends React.Component {
   }
 
   render() {
-    console.log(this.constructor.name);
-    console.log(this.props);
     const { currentUser } = this.props;
     let username = (currentUser) ? currentUser.username : "";
     const { userId } = this.props.match.params;

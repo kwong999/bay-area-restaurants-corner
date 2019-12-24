@@ -234,9 +234,6 @@ class BusinessSingleLeft extends React.Component {
     if (this.props.currentUserId) {
       if (!this.props.users[this.props.currentUserId].commentIds) return null;
     }
-    console.log(this.constructor.name);
-    console.log(this.props);
-    console.log(this.state);
     const { business, comments, rates, currentUserId, users } = this.props;
     return (
       <div className='business-single-left'>

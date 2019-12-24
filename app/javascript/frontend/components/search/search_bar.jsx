@@ -28,8 +28,6 @@ class SearchBar extends React.Component{
   }
 
   render() {
-    console.log('Search:')
-    console.log(this.props);
     const currentSearch = (this.props.search.length > 0) ? `Search result of: ${this.props.search} ` : '';
     const resetButton = (this.props.search.length > 0) ? <button onClick={this.handleReset}>Reset Search</button> : '';
     return(

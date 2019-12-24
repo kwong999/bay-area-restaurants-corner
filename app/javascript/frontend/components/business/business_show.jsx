@@ -4,8 +4,6 @@ import BusinessSingleRightContainer from './business_single_right_container';
 
 class BusinessShow extends React.Component {
   render() {
-    console.log(this.constructor.name);
-    console.log(this.props);
     return (
       <div className='business-single'>
         <BusinessSingleLeftContainer businessId={this.props.match.params.businessId}/>

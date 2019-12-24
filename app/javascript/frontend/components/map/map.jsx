@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 class Map extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.pos.lat === nextProps.pos.lat && this.props.pos.lng === nextProps.pos.lng) {
-      console.log('Stop map');
       return false;
     } else {
       return true;
@@ -13,7 +12,6 @@ class Map extends React.Component {
   
   componentDidMount() {
     if (this.props.pos) {
-      console.log("Rendered-map");
       // const { pos } = this.props;
       // const mapOptions = {
       //   center: pos,
@@ -29,8 +27,6 @@ class Map extends React.Component {
   }
   
   render() {
-    console.log(this.constructor.name);
-    console.log(this.props);
     return (
       <div ref='map' id='map-container'></div>
     )
