@@ -31,21 +31,25 @@ class Api::BusinessesController < ApplicationController
   end
 
   def create
-    begin
-      ActiveRecord::Base.transaction do
-        @business = Business.new(business_params)
-        if @business.save!
-          @address = Address.new(address_params)
-          @address.business_id = @business.id
-          @hour = Hour.new(hour_params)
-          @hour.business_id = @business.id
-          if @address.save! && @hour.save!
-            return render 'api/businesses/show'
+    if (params[:admin_authorization_code] && params[:admin_authorization_code] === ENV['ADMIN_AUTHORIZATION_CODE'])
+      begin
+        ActiveRecord::Base.transaction do
+          @business = Business.new(business_params)
+          if @business.save!
+            @address = Address.new(address_params)
+            @address.business_id = @business.id
+            @hour = Hour.new(hour_params)
+            @hour.business_id = @business.id
+            if @address.save! && @hour.save!
+              return render 'api/businesses/show'
+            end
           end
         end
+      rescue ActiveRecord::RecordInvalid => exception
+        render json: exception.record.errors.full_messages, status: 422
       end
-    rescue ActiveRecord::RecordInvalid => exception
-      render json: exception.record.errors.full_messages, status: 422
+    else
+      render json: 'Unauthorized', status: 401
     end
   end
 

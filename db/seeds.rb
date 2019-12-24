@@ -13,6 +13,8 @@ Hour.delete_all
 Comment.delete_all
 Rate.delete_all
 
+
+admin1 = User.create!({ username: ENV['ADMIN_AC'], password: ENV['ADMIN_PW'], role: 'Admin' })
 u1 = User.create!({ username: ENV['DB_SEED_U1'], password: ENV['DB_SEED_P1'] })
 u2 = User.create!({ username: ENV['DB_SEED_U2'], password: ENV['DB_SEED_P2'] })
 u3 = User.create!({ username: ENV['DB_SEED_U3'], password: ENV['DB_SEED_P3'] })
