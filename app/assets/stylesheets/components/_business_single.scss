@@ -1,4 +1,6 @@
 .business-single {
+  max-width: 1280px;
+  margin: auto;
   display: flex;
   justify-content: space-evenly;
 }
@@ -6,15 +8,13 @@
 .business-single-left,
 .business-single-right {
   font-size: 16px;
-  width: 50%;
+  width: 40%;
 }
 
 .business-single-left > *:not(.middle-line),
 .business-single-right > *:not(.middle-line) {
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .business-single-left > h3 {

@@ -115,6 +115,7 @@ class ProfileTab extends React.Component {
                 <RenderComments comments={this.props.currentUser.comments} />
               </ul>
             </div>
+            <MiddleLine />
           </>
         )
       case 'rates':
@@ -130,6 +131,7 @@ class ProfileTab extends React.Component {
             <div id='page-line'>
               {this.renderPageLine()}
             </div>
+            <MiddleLine />
           </>
         )
       case 'comments':
@@ -145,6 +147,7 @@ class ProfileTab extends React.Component {
             <div id='page-line'>
               {this.renderPageLine()}
             </div>
+            <MiddleLine />
           </>
         )
       case 'votes':
@@ -160,6 +163,7 @@ class ProfileTab extends React.Component {
             <div id='page-line'>
               {this.renderPageLine()}
             </div>
+            <MiddleLine />
           </>
         )
       default:

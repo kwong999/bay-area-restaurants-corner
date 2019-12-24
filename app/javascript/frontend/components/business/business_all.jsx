@@ -84,6 +84,7 @@ class BusinessAll extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business'>
+        <div className='boundary-1-10'></div>
         <div className='business-left'>
           <h3>All Restaurants:</h3>
           <ul className='business-list'>
@@ -96,6 +97,7 @@ class BusinessAll extends React.Component {
         <div className='business-right'>
           <ImageSession />
         </div>
+        <div className='boundary-1-10'></div>
       </div>
     )
   }

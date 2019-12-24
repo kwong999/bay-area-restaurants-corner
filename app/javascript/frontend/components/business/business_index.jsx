@@ -103,6 +103,7 @@ class BusinessIndex extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business'>
+        <div className='boundary-1-10'></div>
         <div className='business-left'>
           <SearchBarContainer />
           <h3>{this.renderTitle()}</h3>
@@ -116,6 +117,7 @@ class BusinessIndex extends React.Component {
         <div className='business-right'>
           <ImageSession />
         </div>
+        <div className='boundary-1-10'></div>
       </div>
     )
   };
