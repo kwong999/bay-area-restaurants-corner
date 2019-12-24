@@ -8,9 +8,17 @@ class BusinessMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: this.props.match.path
+      active: this.props.location.pathname
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const newPath = this.props.location.pathname;
+    const oldPath = prevProps.location.pathname;
+    if (newPath !== oldPath) {
+      this.setState({ active: newPath })
+    }
   }
 
   handleClick(type) {

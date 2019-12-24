@@ -86,7 +86,6 @@ class RateSelector extends React.Component {
           </label>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>
-        <button onClick={this.handleEdit}>Cancel</button>
       </div>
     );
   }
