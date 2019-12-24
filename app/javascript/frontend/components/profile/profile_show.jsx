@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import ProfileIndexContainer from './profile_index_container';
 import ProfileRateContainer from './profile_rate_container';
 import ProfileCommentContainer from './profile_comment_container';
@@ -22,6 +22,10 @@ class ProfileShow extends React.Component {
   }
 
   render() {
+    if (this.props.errors === "access denied") {
+      this.props.userAccessDeniedRedirected();
+      return <Redirect to='/' />
+    };
     const { currentUser } = this.props;
     let username = (currentUser) ? currentUser.username : "";
     const { userId } = this.props.match.params;

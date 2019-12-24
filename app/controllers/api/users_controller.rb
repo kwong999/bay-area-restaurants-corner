@@ -6,6 +6,9 @@ class Api::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id]);
+    if @user.role === 'Admin'
+      return render json: 'access denied', status: 401
+    end
     case params[:show]
     when 'index'
       @user_rates = user_rates(@user, 5, 1)
