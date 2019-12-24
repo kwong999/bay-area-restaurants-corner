@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BusinessShort from './business_short';
+import ImageSession from '../image/image';
 
 class BusinessAll extends React.Component {
   constructor(props) {
@@ -50,7 +51,6 @@ class BusinessAll extends React.Component {
 
   renderPageLine() {
     const maxPage = Math.ceil(this.props.businesses.count / this.state.limit);
-    console.log('maxPage:' + maxPage);
     if (maxPage <= 1) return null;
     switch(this.state.currentPage) {
       case 1:
@@ -83,8 +83,8 @@ class BusinessAll extends React.Component {
   render() {
     if (this.props.ui.loadingBusiness) return null;
     return(
-      <>
-        <div className='business'>
+      <div className='business'>
+        <div className='business-left'>
           <h3>All Restaurants:</h3>
           <ul className='business-list'>
             {this.renderBusinessList()}
@@ -93,7 +93,10 @@ class BusinessAll extends React.Component {
             {this.renderPageLine()}
           </div>
         </div>
-      </>
+        <div className='business-right'>
+          <ImageSession />
+        </div>
+      </div>
     )
   }
 }

@@ -64,7 +64,6 @@ class BusinessSingleLeft extends React.Component {
   renderPageLine() {
     if (!this.props.comments[this.props.business.id]) return null;
     const maxPage = Math.ceil(this.props.business.commentIds.length / this.state.limit);
-    console.log('maxPage:' + maxPage);
     if (maxPage <= 1) return null;
     switch (this.state.currentPage) {
       case 1:

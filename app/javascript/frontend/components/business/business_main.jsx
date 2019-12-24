@@ -36,13 +36,11 @@ class BusinessMain extends React.Component {
             ><Link to={`/all`}>All Restaurants</Link></li>
           </ul>
         </nav>
-        <Route path='/'>
-          <Switch>
-            <Route exact path='/' component={BusinessIndexContainer} />
-            <Route exact path='/all' component={BusinessAllContainer} />
-            <Route exact path='/business/:businessId' component={BusinessShow} />
-          </Switch>
-        </Route>
+        <Switch>
+          <Route exact path='/' component={BusinessIndexContainer} />
+          <Route exact path='/all' component={BusinessAllContainer} />
+          <Route exact path='/business/:businessId' component={BusinessShow} />
+        </Switch>
       </>
     )
   };

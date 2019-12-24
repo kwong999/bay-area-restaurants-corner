@@ -97,11 +97,11 @@
   flex-direction: column;
 }
 
-.business-short-detail > :first-child > a {
+.business-single a {
   font-weight: bold;
   color: rgb(0, 115, 187);
 }
 
-.business-short-detail > :first-child > a:hover {
+.business-single a:hover {
   border-bottom: rgb(0, 115, 187) 1px solid;
 }

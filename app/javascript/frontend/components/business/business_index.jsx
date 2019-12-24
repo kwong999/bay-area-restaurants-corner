@@ -1,6 +1,7 @@
 import React from 'react';
 import BusinessShort from './business_short';
 import SearchBarContainer from '../search/search_bar_container';
+import ImageSession from '../image/image';
 
 class BusinessIndex extends React.Component {
   constructor(props) {
@@ -69,7 +70,6 @@ class BusinessIndex extends React.Component {
   
   renderPageLine() {
     const maxPage = Math.ceil(this.props.businesses.count / this.state.limit);
-    console.log('maxPage:' + maxPage);
     if (maxPage <= 1) return null;
     switch (this.state.currentPage) {
       case 1:
@@ -103,13 +103,18 @@ class BusinessIndex extends React.Component {
     if (this.props.ui.loadingBusiness) return null;
     return(
       <div className='business'>
-        <SearchBarContainer />
-        <h3>{this.renderTitle()}</h3>
-        <ul className='business-list'>
-          {this.renderBusinessList()}
-        </ul>
-        <div id='page-line'>
-          {this.renderPageLine()}
+        <div className='business-left'>
+          <SearchBarContainer />
+          <h3>{this.renderTitle()}</h3>
+          <ul className='business-list'>
+            {this.renderBusinessList()}
+          </ul>
+          <div id='page-line'>
+            {this.renderPageLine()}
+          </div>
+        </div>
+        <div className='business-right'>
+          <ImageSession />
         </div>
       </div>
     )

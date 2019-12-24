@@ -21,8 +21,8 @@ class App extends React.Component {
           <h2>Find a place for your meal</h2>
         </header>
         <Switch>
-          <AuthRoute path='/login' component={LoginFormContainer} />
-          <AuthRoute path='/signup' component={SignupFormContainer} />
+          <AuthRoute exact path='/login' component={LoginFormContainer} />
+          <AuthRoute exact path='/signup' component={SignupFormContainer} />
           <Route path='/user/:userId' component={ProfileShowContainer} />
           <Route path='/' component={BusinessMain} />
         </Switch>

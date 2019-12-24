@@ -20,14 +20,24 @@
   color:white;
 }
 
-.business > *:not(.middle-line) {
+.business {
+  display: flex;
+  justify-content: left;
+}
+
+.business-left,
+.business-right {
+  width: 50%;
+}
+
+.business-left > *:not(.middle-line) {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.business > h3 {
+.business h3 {
   font-family: $sans-serif;
   font-size: 22px;
   font-weight: bold;
@@ -44,11 +54,22 @@
   font-family: $sans-serif;
 }
 
-.business-single a {
+.business-short-detail a {
   font-weight: bold;
   color: rgb(0, 115, 187);
 }
 
-.business-single a:hover {
+.business-short-detail a:hover {
   border-bottom: rgb(0, 115, 187) 1px solid;
+}
+
+.business-right .business-img {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 410px;
+  height: 410px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }

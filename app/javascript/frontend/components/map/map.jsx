@@ -10,6 +10,7 @@ class Map extends React.Component {
       return true;
     }
   }
+  
   componentDidMount() {
     if (this.props.pos) {
       console.log("Rendered-map");

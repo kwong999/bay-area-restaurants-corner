@@ -46,7 +46,6 @@ class ProfileTab extends React.Component {
 
   renderPageLine() {
     const maxPage = Math.ceil(this.props.currentUser.count / this.state.limit);
-    console.log('maxPage:' + maxPage);
     if (maxPage <= 1) return null;
     switch (this.state.currentPage) {
       case 1:
