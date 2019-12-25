@@ -77,3 +77,15 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
+@media (max-width: 800px) {
+  .business {
+    margin: auto;
+    display: block;
+  }
+  .business-left,
+  .business-right {
+    width: 80%;
+    margin: auto;
+  }
+}

@@ -109,3 +109,15 @@
 .business-single a:hover {
   border-bottom: rgb(0, 115, 187) 1px solid;
 }
+
+@media (max-width: 800px) {
+  .business-single {
+    margin: auto;
+    display: block;
+  }
+  .business-single-left,
+  .business-single-right {
+    width: 80%;
+    margin: auto;
+  }
+}
