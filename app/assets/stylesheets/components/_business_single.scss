@@ -1,5 +1,4 @@
 .business-single {
-  max-width: 1280px;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -34,11 +33,17 @@
 }
 
 .business-long-detail > li,
-.business-operating-hours > li > *,
-.business-comments > li,
+.business-operating-hours > li,
 .current-user-rate-comment {
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 16px;
+  font-family: $sans-serif;
+}
+
+.business-comments > li {
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 16px;
   font-family: $sans-serif;
 }
@@ -56,7 +61,6 @@
 .vote-detail,
 .vote-options {
   margin-top: 5px;
-  margin-left: 20px;
 }
 
 .vote-options > :last-child {

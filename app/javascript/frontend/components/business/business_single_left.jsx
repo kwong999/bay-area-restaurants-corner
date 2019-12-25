@@ -191,10 +191,10 @@ class BusinessSingleLeft extends React.Component {
       }
       return (
         <li key={comment.id}>  
-          <p>{comment.body}</p>
           <p className='comment-author'>
-            by <Link to={`/user/${comment.user_id}/index`} props={comment.username}>{comment.username}</Link>
+            <Link to={`/user/${comment.user_id}/index`} props={comment.username}>{comment.username}</Link> :
           </p>
+          <p>{comment.body}</p>
           <p className='vote-detail'>{voteLine}</p>
           {this.renderVoteOptions(comment.id)}
         </li>
