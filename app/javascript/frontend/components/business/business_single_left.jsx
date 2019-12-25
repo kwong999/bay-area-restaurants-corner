@@ -184,9 +184,9 @@ class BusinessSingleLeft extends React.Component {
         if (votingResult === 0) {
           voteLine = `Even by ${votingCounts} votes`
         } else if ( votingResult > 0 ) {
-          voteLine = `Net ${votingResult} upvotes by ${votingCounts} votes`
+          voteLine = `Net ${votingResult} upvotes ↑ by ${votingCounts} votes`
         } else {
-          voteLine = `Net ${votingResult} downvotes by ${votingCounts} votes`
+          voteLine = `Net ${votingResult} downvotes ↓ by ${votingCounts} votes`
         }
       }
       return (

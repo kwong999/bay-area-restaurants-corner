@@ -9,7 +9,7 @@ class ProfileTab extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      limit: 3
+      limit: 5
     }
   }
 

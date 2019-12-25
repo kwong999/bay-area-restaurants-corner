@@ -12,17 +12,17 @@ class Map extends React.Component {
   
   componentDidMount() {
     if (this.props.pos) {
-      // const { pos } = this.props;
-      // const mapOptions = {
-      //   center: pos,
-      //   zoom: 18
-      // };
-      // const map = ReactDOM.findDOMNode(this.refs.map);
-      // this.map = new google.maps.Map(map, mapOptions);
-      // const marker = new google.maps.Marker({
-      //   position: pos,
-      //   map: this.map
-      // });
+      const { pos } = this.props;
+      const mapOptions = {
+        center: pos,
+        zoom: 18
+      };
+      const map = ReactDOM.findDOMNode(this.refs.map);
+      this.map = new google.maps.Map(map, mapOptions);
+      const marker = new google.maps.Marker({
+        position: pos,
+        map: this.map
+      });
     }
   }
   

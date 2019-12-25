@@ -1,7 +1,10 @@
 import React from 'react';
-import businessImg01 from '../../../../assets/images/random-burger-1280.jpg'
-import businessImg02 from '../../../../assets/images/random-asparagus-1280.jpg'
-import businessImg03 from '../../../../assets/images/random-maki-1280.jpg'
+import businessImg01 from '../../../../assets/images/random-asparagus-500.jpg'
+import businessImg02 from '../../../../assets/images/random-burger-500.jpg'
+import businessImg03 from '../../../../assets/images/random-cake-500.jpg'
+import businessImg04 from '../../../../assets/images/random-maki-500.jpg'
+import businessImg05 from '../../../../assets/images/random-mango-catfish-taco-500.jpg'
+import businessImg06 from '../../../../assets/images/random-pizza-500.jpg'
 
 let timer;
 
@@ -19,8 +22,8 @@ class ImageSession extends React.Component {
 
   renderRandomImg() {
     clearInterval(timer);
-    const imgList = [ businessImg01, businessImg02, businessImg03 ];
-    timer = setTimeout(() => this.setState({ imgIndex: (this.state.imgIndex + 1) % 3 }), 3000);
+    const imgList = [businessImg01, businessImg02, businessImg03, businessImg04, businessImg05, businessImg06 ];
+    timer = setTimeout(() => this.setState({ imgIndex: (this.state.imgIndex + 1) % 6 }), 3000);
     return(
       <img src={imgList[this.state.imgIndex]} alt="businessImg" />
     )
