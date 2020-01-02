@@ -8,7 +8,7 @@ class BusinessIndex extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      limit: 3,
+      limit: 5,
       random: (this.props.search) ? false : true
     }
   }

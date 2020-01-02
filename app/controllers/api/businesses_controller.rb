@@ -19,8 +19,8 @@ class Api::BusinessesController < ApplicationController
       @businesses = Business
         .includes(:comments)
         .order("RANDOM()")
-        .limit(3)
-      @count = 3
+        .limit(5)
+      @count = 5
     else
       @businesses = Business
         .includes(:comments).all
