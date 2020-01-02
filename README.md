@@ -1,24 +1,15 @@
-# README
+# [Bay Area Restaurants Corner](https://protected-shore-60276.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+A website platform allow users share their experience and review of bay area restaurants.
 
-Things you may want to cover:
+## Functions
+- Everybody can view restaurant information, reviews, rates
+- Registered users can rate/comment restaurant and vote others comments.
+- Registered users have their own profile to record their rates, comments and votes.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Built With
+- Ruby on Rails
+- React
+- Redux
+- PostgreSQL
