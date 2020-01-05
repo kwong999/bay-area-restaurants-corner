@@ -1,4 +1,4 @@
-# [Bay Area Restaurants Corner](https://protected-shore-60276.herokuapp.com/)
+# [Bay Area Restaurants Corner](https://bay-area-restaurants-corner.herokuapp.com/)
 
 ## Description
 
