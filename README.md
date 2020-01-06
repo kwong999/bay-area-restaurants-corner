@@ -19,3 +19,7 @@ A website platform allow users share their experience and review of restaurants 
 * React
 * Redux
 * PostgreSQL
+* Webpack
+* HTML5
+* SASS
+* Google Map API
