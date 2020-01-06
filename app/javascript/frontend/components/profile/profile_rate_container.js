@@ -4,7 +4,8 @@ import ProfileTab from './profile_tab';
 
 const mapStateToProps = (state, { match }) => ({
   currentUser: state.entities.users[match.params.userId],
-  type: 'rates'
+  type: 'rates',
+  ui: state.ui
 });
 
 const mapDispatchToProps = dispatch => ({
