@@ -21,6 +21,10 @@ class ProfileShow extends React.Component {
     }
   }
 
+  renderLoader() {
+    if (this.props.ui.loading.loadingUser) return <div className="loader"></div>;
+  }
+
   render() {
     if (this.props.errors === "access denied") {
       this.props.userAccessDeniedRedirected();
@@ -55,6 +59,7 @@ class ProfileShow extends React.Component {
           <h3>
             {username}
           </h3>
+          {this.renderLoader()}
           <Route path='/user/:userId/index' component={ProfileIndexContainer} />
           <Route path='/user/:userId/rates' component={ProfileRateContainer} />
           <Route path='/user/:userId/comments' component={ProfileCommentContainer} />

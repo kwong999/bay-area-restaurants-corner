@@ -5,7 +5,8 @@ import { fetchUser, userAccessDeniedRedirected } from '../../actions/user_action
 const mapStateToProps = (state, ownProps) => {
   return ({
     currentUser: state.entities.users[ownProps.match.params.userId],
-    errors: state.errors.access
+    errors: state.errors.access,
+    ui: state.ui
 })};
 
 const mapDispatchToProps = dispatch => ({

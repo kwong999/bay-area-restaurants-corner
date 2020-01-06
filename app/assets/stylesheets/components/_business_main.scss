@@ -2,6 +2,7 @@
   background: rgb(255, 209, 191);
   font-family: $sans-serif;
 }
+
 .business-main-nav-bar ul {
   width: 80%;
   margin: auto;
@@ -33,11 +34,15 @@
   width: 40%;
 }
 
-.business-left > *:not(.middle-line) {
+.business-left > *:not(.middle-line, .loader) {
   margin-top: 10px;
   margin-bottom: 10px;
   // margin-left: 20px;
   // margin-right: 20px;
+}
+
+.business .loader {
+  margin: 50px auto;
 }
 
 .business h3 {
