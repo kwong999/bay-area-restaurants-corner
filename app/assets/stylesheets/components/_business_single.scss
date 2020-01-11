@@ -4,6 +4,18 @@
   justify-content: space-evenly;
 }
 
+.business-single button {
+  width: fit-content;
+  border-radius: 10px;
+  background: lightgrey;
+  color: black;
+  padding: 5px;
+}
+
+.business-single button:hover {
+  background: gray;
+}
+
 .business-single-left,
 .business-single-right {
   font-size: 16px;
@@ -65,17 +77,6 @@
 
 .vote-options > :last-child {
   margin-left: 5px;
-}
-
-.vote-options > button {
-  border-radius: 10px;
-  background: lightgrey;
-  color: black;
-  padding: 5px;
-}
-
-.vote-options > button:hover {
-  background: gray;
 }
 
 .current-user-rate-comment {
