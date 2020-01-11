@@ -29,6 +29,18 @@
   justify-content: left;
 }
 
+.business button {
+  width: fit-content;
+  border-radius: 10px;
+  background: lightgrey;
+  color: black;
+  padding: 5px;
+}
+
+.business button:hover {
+  background: gray;
+}
+
 .business-left,
 .business-right {
   width: 40%;
