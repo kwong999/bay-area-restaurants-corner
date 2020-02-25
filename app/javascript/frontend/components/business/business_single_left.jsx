@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
 import BusinessLong from './business_long';
 import BusinessOperatingHours from './business_operating_hours';
 import RatingSection from '../rate/rate_section';
 import UserComment from '../comment/user_comment';
+import CommentList from '../comment/comment_list';
 
 class BusinessSingleLeft extends React.Component {
   constructor(props) {
@@ -93,61 +92,6 @@ class BusinessSingleLeft extends React.Component {
     }
   }
 
-  renderComments(comments) {
-    if (!comments) return null;
-    return comments.map( comment => {
-      const votingResult = comment.voting.voting_result;
-      const votingCounts = comment.voting.voting_counts;
-      let voteLine;
-      if (votingCounts === 0) {
-        voteLine = 'No votes';
-      } else {
-        if (votingResult === 0) {
-          voteLine = `Even by ${votingCounts} votes`
-        } else if ( votingResult > 0 ) {
-          voteLine = `Net ${votingResult} upvotes ↑ by ${votingCounts} votes`
-        } else {
-          voteLine = `Net ${votingResult} downvotes ↓ by ${votingCounts} votes`
-        }
-      }
-      return (
-        <li key={comment.id}>  
-          <p className='comment-author'>
-            <Link to={`/user/${comment.user_id}/index`} props={comment.username}>{comment.username}</Link> :
-          </p>
-          <p>{comment.body}</p>
-          <p className='vote-detail'>{voteLine}</p>
-          {this.renderVoteOptions(comment.id)}
-        </li>
-      );
-    })
-  }
-
-  renderVoteOptions(commentId){
-    if (!this.props.currentUserId) return null;
-    if (!this.props.votes[this.props.currentUserId]) return null;
-    const vote = this.props.votes[this.props.currentUserId][commentId];
-    let action;
-    if (!vote) {
-      action = 'Vote';
-    } else {
-      if (vote.voting === 1) {
-        action = 'Upvoted';
-      } else {
-        action = 'Downoted';
-      }
-    }
-    return (
-      <VoteLineContainer
-        vote={vote}
-        user_id={this.props.currentUserId}
-        business_id={this.props.business.id}
-        comment_id={commentId}
-        action={action}
-      />
-    )
-  }
-
   render() {
     if (this.props.ui.loadingBusiness) return null;
     if (!this.props.business) return null;
@@ -155,7 +99,7 @@ class BusinessSingleLeft extends React.Component {
     if (this.props.currentUserId) {
       if (!this.props.users[this.props.currentUserId].commentIds) return null;
     }
-    const { business, comments, rates, currentUserId, users } = this.props;
+    const { business, comments, rates, currentUserId, users, votes} = this.props;
     return (
       <div className='business-single-left'>
         <h3>{business.name}</h3>
@@ -177,7 +121,7 @@ class BusinessSingleLeft extends React.Component {
         <MiddleLine />
         <h4>Reviews</h4>
         <ul className='business-comments'>
-          {this.renderComments(comments[business.id])}
+          {CommentList(comments[business.id], currentUserId, votes, business.id)}
         </ul>
         <div id='page-line'>
           {this.renderPageLine()}
