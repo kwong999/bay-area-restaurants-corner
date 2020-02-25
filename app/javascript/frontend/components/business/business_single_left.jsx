@@ -93,16 +93,16 @@ class BusinessSingleLeft extends React.Component {
     }
   }
 
-  renderBusinessLongDetail() {
-    return <BusinessLong business={this.props.business} />
-  }
+  // renderBusinessLongDetail() {
+  //   return <BusinessLong business={this.props.business} />
+  // }
 
-  renderOperatingHours(hour) {
-    const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
-    return days.map((day, idx) => (
-      <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
-    ))
-  }
+  // renderOperatingHours(hour) {
+  //   const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
+  //   return days.map((day, idx) => (
+  //     <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
+  //   ))
+  // }
 
   renderRatingSection(currentUserId, currentUserRates, businessId) {
     if (!currentUserId) {
