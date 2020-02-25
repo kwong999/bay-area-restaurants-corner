@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CommentFormContainer from '../comment/comment_form_container';
 import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
 import BusinessLong from './business_long';
 import BusinessOperatingHours from './business_operating_hours';
-import LoginSignUpLine from '../ui/login_sign_up_line';
 import RatingSection from '../rate/rate_section';
+import UserComment from '../comment/user_comment';
 
 class BusinessSingleLeft extends React.Component {
   constructor(props) {
@@ -94,36 +93,6 @@ class BusinessSingleLeft extends React.Component {
     }
   }
 
-  renderCurrentUserReview(currentUserId, comment, businessId) {
-    if (!currentUserId) {
-      return LoginSignUpLine('comment');
-    }
-    if (comment.id) {
-      return (
-        <div className='user-comment'>
-          <CommentFormContainer
-            action='View'
-            currentComment={comment.body}
-            user_id={comment.user_id}
-            business_id={comment.business_id}
-            comment_id={comment.id}
-          />
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <CommentFormContainer 
-            action='Create'
-            currentComment=''
-            user_id={currentUserId}
-            business_id={businessId}
-          />
-        </div>
-      )
-    }
-  }
-
   renderComments(comments) {
     if (!comments) return null;
     return comments.map( comment => {
@@ -202,7 +171,7 @@ class BusinessSingleLeft extends React.Component {
           </div>
           <div>
             <h4>Reviews</h4>
-            {this.renderCurrentUserReview(currentUserId, comments.current_user, business.id)}
+            {UserComment(currentUserId, comments.current_user, business.id)}
           </div>
         </div>
         <MiddleLine />
