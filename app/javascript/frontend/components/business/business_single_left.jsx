@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CommentFormContainer from '../comment/comment_form_container';
-import RateSelectorContainer from '../rate/rate_selector_container';
 import VoteLineContainer from '../vote/vote_line_container';
 import MiddleLine from '../ui/middle_line';
 import BusinessLong from './business_long';
 import BusinessOperatingHours from './business_operating_hours';
+import LoginSignUpLine from '../ui/login_sign_up_line';
+import RatingSection from '../rate/rate_section';
 
 class BusinessSingleLeft extends React.Component {
   constructor(props) {
@@ -93,50 +94,9 @@ class BusinessSingleLeft extends React.Component {
     }
   }
 
-  // renderBusinessLongDetail() {
-  //   return <BusinessLong business={this.props.business} />
-  // }
-
-  // renderOperatingHours(hour) {
-  //   const days = ["hours_mon", "hours_tue", "hours_wed", "hours_thu", "hours_fri", "hours_sat", "hours_sun"]
-  //   return days.map((day, idx) => (
-  //     <li key={idx}><p>{day.charAt(6).toUpperCase() + day.slice(7)}: </p><p>{(hour[day]) ? hour[day] : '-'}</p></li>
-  //   ))
-  // }
-
-  renderRatingSection(currentUserId, currentUserRates, businessId) {
-    if (!currentUserId) {
-      return this.renderLoginSignUpLine('rate');
-    }
-    if (!currentUserRates) {
-      return (
-        <div className='rating-section'>
-          <RateSelectorContainer
-            action='Create'
-            user_id={currentUserId}
-            business_id={businessId}
-            rating='select one'
-          />
-        </div>
-      );
-    } else {
-      return (
-        <div className='rating-section'>
-          <RateSelectorContainer
-            action='View'
-            user_id={currentUserId}
-            business_id={businessId}
-            rating={currentUserRates.rating}
-            rate_id={currentUserRates.id}
-          />
-        </div>
-      )
-    }
-  }
-
   renderCurrentUserReview(currentUserId, comment, businessId) {
     if (!currentUserId) {
-      return this.renderLoginSignUpLine('comment');
+      return LoginSignUpLine('comment');
     }
     if (comment.id) {
       return (
@@ -162,14 +122,6 @@ class BusinessSingleLeft extends React.Component {
         </div>
       )
     }
-  }
-
-  renderLoginSignUpLine(text) {
-    return (
-      <p className='login-sign-up-line'>
-        <Link to='/login'>Login</Link> / <Link to='/signup'>Sign up</Link> to {text}
-      </p>
-    )
   }
 
   renderComments(comments) {
@@ -246,7 +198,7 @@ class BusinessSingleLeft extends React.Component {
         <div className='current-user-rate-comment'>
           <div>
             <h4>Rate it!</h4>
-            {this.renderRatingSection(currentUserId, rates[currentUserId], business.id)}
+            {RatingSection(currentUserId, rates[currentUserId], business.id)}
           </div>
           <div>
             <h4>Reviews</h4>
