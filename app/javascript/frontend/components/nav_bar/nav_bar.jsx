@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBarLeft from './nav_bar_left';
+import NavBarRightContainer from './nav_bar_right_container';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class NavBar extends React.Component {
     return (
       <nav className='nav-bar'>
         <NavBarLeft />
-        <NavBarRight />
+        <NavBarRightContainer />
       </nav>
     )
   }
