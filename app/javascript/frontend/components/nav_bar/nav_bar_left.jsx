@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Button from '../ui/button';
 
 class NavBarLeft extends React.Component {
   constructor(props) {
@@ -9,7 +9,12 @@ class NavBarLeft extends React.Component {
   render() {
     return (
       <div className='nav-bar-left'>
-        <button title={'Home Page'}><Link to='/'>Home Page</Link></button>
+        <Button
+          link={"/"}
+          onClick={() => null}
+          text={"Home Page"}
+          title={"Home Page"}
+        />
       </div>
     )
   }
