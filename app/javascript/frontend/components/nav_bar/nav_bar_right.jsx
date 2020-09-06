@@ -8,6 +8,7 @@ class NavBarRight extends React.Component {
 
   renderSession(logged_in, logout, currentUser) {
     if (logged_in) {
+      // display current user name, profile button and logout button when logged in
       return (
         <>
           <p>Welcome, <span>{currentUser.username}</span></p>
@@ -24,6 +25,7 @@ class NavBarRight extends React.Component {
         </>
       )
     } else {
+      // display login button and sign up button when not logged in
       return (
         <>
           <Button
@@ -44,6 +46,7 @@ class NavBarRight extends React.Component {
   render() {
     const { currentUser, logout } = this.props;
     const logged_in = currentUser ? true : false;
+    //  buttons display depends on log in status
     return (
       <div className='nav-bar-right'>
         {this.renderSession(logged_in, logout, currentUser)}

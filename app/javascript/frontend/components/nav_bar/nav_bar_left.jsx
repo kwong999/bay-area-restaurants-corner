@@ -7,6 +7,7 @@ class NavBarLeft extends React.Component {
   }
 
   render() {
+    // display Home Page button
     return (
       <div className='nav-bar-left'>
         <Button
