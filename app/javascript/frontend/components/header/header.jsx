@@ -2,6 +2,7 @@ import React from 'react';
 
 import mainImg from '../../../../assets/images/main-pasta-1920.jpg';
 import GreetingContainer from '../session/greeting_container';
+import Figure from '../ui/figure';
 
 class Header extends React.Component {
   constructor(props) {
@@ -17,9 +18,11 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <figure className='main-img'>
-          <img src={mainImg} alt="mainImg" />
-        </figure>
+        <Figure 
+          className={"main-img"}
+          img={mainImg}
+          alt={"mainImg"}
+        />
         <GreetingContainer />
         <h1>{this.state.h1}</h1>
         <h2>{this.state.h2}</h2>
