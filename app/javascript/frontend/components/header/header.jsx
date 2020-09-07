@@ -1,8 +1,8 @@
 import React from 'react';
 
 import mainImg from '../../../../assets/images/main-pasta-1920.jpg';
-import GreetingContainer from '../session/greeting_container';
 import Figure from '../ui/figure';
+import NavBar from '../nav_bar/nav_bar';
 
 class Header extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Header extends React.Component {
           img={mainImg}
           alt={"mainImg"}
         />
-        <GreetingContainer />
+        <NavBar />
         <h1>{this.state.h1}</h1>
         <h2>{this.state.h2}</h2>
       </header>
