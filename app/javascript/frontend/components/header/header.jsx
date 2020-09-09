@@ -3,16 +3,11 @@ import React from 'react';
 import mainImg from '../../../../assets/images/main-pasta-1920.jpg';
 import Figure from '../ui/figure';
 import NavBar from '../nav_bar/nav_bar';
+import MainTitle from '../main_title/main_title';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // h1 contain app name
-      h1: "Bay Area Restaurants Corner",
-      // h2 app name short info
-      h2: "Find a place for your meal"
-    }
   }
 
   render() {
@@ -24,8 +19,7 @@ class Header extends React.Component {
           alt={"mainImg"}
         />
         <NavBar />
-        <h1>{this.state.h1}</h1>
-        <h2>{this.state.h2}</h2>
+        <MainTitle />
       </header>
     )
   }
