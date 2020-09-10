@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 import Loader from '../ui/loader';
 import MainIndexTitle from './main_index_title';
+import MainIndexList from './main_index_list';
 
 class MainIndexLeft extends React.Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class MainIndexLeft extends React.Component {
 
   render() {
     const loading = this.props.ui.loading.loadingBusiness;
-    console.log(this.props);
     if (loading) {
       return (
         <div className='business-left'>
@@ -31,6 +31,7 @@ class MainIndexLeft extends React.Component {
     return (
       <div className='business-left'>
         <MainIndexTitle currentPathname={this.state.currentPathname} />
+        <MainIndexList businesses={this.props.businesses}/>
       </div>
     )
   }
