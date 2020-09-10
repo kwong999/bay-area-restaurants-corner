@@ -4,6 +4,7 @@ import BusinessIndexContainer from '../business/business_index_container';
 import BusinessAllContainer from '../business/business_all_container';
 import BusinessShow from '../business/business_show';
 import MenuBar from '../menu_bar/menu_bar';
+import MainIndex from './main_index';
 
 class MainContent extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class MainContent extends React.Component {
           updateMainContentState={this.updateMainContentState}
         />
         <Switch>
-          <Route exact path="/" component={BusinessIndexContainer} />
+          <Route exact path="/" component={MainIndex} />
           <Route exact path="/all" component={BusinessAllContainer} />
           <Route exact path="/business/:businessId" component={BusinessShow} />
         </Switch>

@@ -14,17 +14,17 @@ class MenuBar extends React.Component {
   }
 
   render() {
-    const { pathname, updateMainContentState } =  this.props;
+    const { currentPathname, updateMainContentState } =  this.props;
     return (
       <nav className='business-main-nav-bar'>
         <ul>
           <li
-            className={pathname === "/" ? "active" : ""}
+            className={currentPathname === "/" ? "active" : ""}
             onClick={updateMainContentState("pathname", "/")}>
             <Link to={"/"}>{this.state.buttonText.hotRestaurants}</Link>
           </li>
           <li
-            className={pathname === "/all" ? "active" : ""}
+            className={currentPathname === "/all" ? "active" : ""}
             onClick={updateMainContentState("pathname", "/all")}>
             <Link to={"/all"}>{this.state.buttonText.allRestaurants}</Link>
           </li>
