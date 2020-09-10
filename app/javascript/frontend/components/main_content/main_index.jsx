@@ -1,4 +1,5 @@
 import React from 'react';
+import MainIndexRight from './main_index_right';
 
 class MainIndex extends React.Component {
   constructor(props) {
