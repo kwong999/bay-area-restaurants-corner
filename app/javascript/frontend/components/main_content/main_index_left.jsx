@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from '../ui/loader';
 
 class MainIndexLeft extends React.Component {
   constructor(props) {
@@ -9,9 +10,19 @@ class MainIndexLeft extends React.Component {
   }
 
   render() {
-    <div className='business-left'>
+    const loading = this.props.ui.loading.loadingBusiness;
+    if (loading) {
+      return (
+        <div className='business-left'>
+          <Loader />
+        </div>
+      )
+    }
+    return (
+      <div className='business-left'>
 
-    </div>
+      </div>
+    )
   }
 }
 
