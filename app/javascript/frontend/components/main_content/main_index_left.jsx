@@ -16,20 +16,45 @@ class MainIndexLeft extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchBusinesses({ random: true });
+    // query businesses
+    this.queryBusinesses();    
+  }
+
+  componentDidUpdate(prevProps) {
+    const newPath = this.props.location.pathname;
+    const oldPath = prevProps.location.pathname;
+    if (newPath !== oldPath) {
+      // update currentPathname then update Business for display
+      this.setState({ currentPathname: this.props.location.pathname }, () => this.queryBusinesses());
+    }
+  }
+
+  queryBusinesses() {
+    // query businesses according to current path
+    if (this.state.currentPathname === "/") {
+      // Hot Restaurant feature
+      // query 5 random businesses
+      this.props.fetchBusinesses({ random: true });
+    } else if (this.state.currentPathname === "/all") {
+      // All Restaurent feature
+      // query businesses according to currentPage and limit
+      this.props.fetchBusinesses({ limit: this.state.limit, page: this.state.currentPage });
+    }
   }
 
   render() {
     const loading = this.props.ui.loading.loadingBusiness;
     if (loading) {
+      // display loading anime while loading
       return (
-        <div className='business-left'>
+        <div className="business-left">
           <Loader />
         </div>
       )
     }
     return (
-      <div className='business-left'>
+      // display businesses
+      <div className="business-left">
         <MainIndexTitle currentPathname={this.state.currentPathname} />
         <MainIndexList businesses={this.props.businesses}/>
       </div>

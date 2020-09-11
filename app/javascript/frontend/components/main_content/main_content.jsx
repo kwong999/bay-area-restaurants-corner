@@ -37,8 +37,7 @@ class MainContent extends React.Component {
           updateMainContentState={this.updateMainContentState}
         />
         <Switch>
-          <Route exact path="/" component={MainIndex} />
-          <Route exact path="/all" component={BusinessAllContainer} />
+          <Route exact path={ "/" | "/all" } component={MainIndex} />
           <Route exact path="/business/:businessId" component={BusinessShow} />
         </Switch>
       </>
