@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component{
   constructor(props) {
@@ -14,10 +14,12 @@ class SearchBar extends React.Component{
   }
 
   handleChange(e) {
+    // handle search text input
     return this.setState({searchLine: e.currentTarget.value});
   }
 
   handleSubmit(e) {
+    // update search to redux store
     e.preventDefault();
     this.props.receiveSearch(this.state.searchLine);
   }
