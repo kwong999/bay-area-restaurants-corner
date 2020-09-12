@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBarContainer from '../search/search_bar_container';
 
 class MenuBar extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class MenuBar extends React.Component {
             className={currentPathname === "/all" ? "active" : ""}>
             <Link to={"/all"}>{this.state.buttonText.allRestaurants}</Link>
           </li>
+          <SearchBarContainer currentPathname={currentPathname} />
         </ul>
       </nav>
     )

@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 class SearchBar extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      searchLine: this.props.search
+      searchLine: this.props.search,
+      searchText: 'Search by name:',
+      searchButton: 'Search'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(e) {
@@ -18,33 +19,25 @@ class SearchBar extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.fetchSearchResult(this.state.searchLine);
-  }
-
-  handleReset(e) {
-    e.preventDefault();
-    this.props.fetchSearchReset('');
-    this.setState({searchLine: ''});
+    this.props.receiveSearch(this.state.searchLine);
   }
 
   render() {
-    const currentSearch = (this.props.search.length > 0) ? `Search result of: ${this.props.search} ` : '';
-    const resetButton = (this.props.search.length > 0) ? <button onClick={this.handleReset}>Reset Search</button> : '';
+    const { currentPathname } = this.props;
     return(
-      <div className='search-bar'>
+      <li className={`search ${currentPathname === "/search" ? "active" : ""}`}>
         <form>
           <label>
-            Search by name:
+            {this.state.searchText}
             <input 
-              type='text' 
-              onChange={this.handleChange} 
+              type='text'
+              onChange={this.handleChange}
               value={this.state.searchLine} 
             />
           </label>
-          <button onClick={this.handleSubmit}><Link to='/'>Search</Link></button>
+          <button onClick={this.handleSubmit}><Link to="/search">{this.state.searchButton}</Link></button>
         </form>
-        <div><p className={(this.props.search.length > 0) ? 'active' : 'hidden'}>{currentSearch}</p> {resetButton}</div>
-      </div>
+      </li>
     )
   };
 }

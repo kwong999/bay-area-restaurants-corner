@@ -11,7 +11,7 @@ class MainIndexLeft extends React.Component {
       currentPathname: this.props.location.pathname,
       currentPage: 1,
       limit: 5,
-      random: (this.props.search) ? false : true
+      search: this.props.search
     }
   }
 
@@ -23,22 +23,37 @@ class MainIndexLeft extends React.Component {
   componentDidUpdate(prevProps) {
     const newPath = this.props.location.pathname;
     const oldPath = prevProps.location.pathname;
-    if (newPath !== oldPath) {
-      // update currentPathname then update Business for display
-      this.setState({ currentPathname: this.props.location.pathname }, () => this.queryBusinesses());
+    const newSearch = this.props.search;
+    const oldSearch = prevProps.search;
+    if (newPath !== oldPath || newSearch !== oldSearch) {
+      // update currentPathname and search key then update Business for display
+      this.setState({ 
+          currentPathname: this.props.location.pathname, 
+          search: this.props.search 
+        },
+        () => this.queryBusinesses()
+      );
     }
   }
 
   queryBusinesses() {
     // query businesses according to current path
     if (this.state.currentPathname === "/") {
-      // Hot Restaurant feature
+      // Hot Restaurants feature
       // query 5 random businesses
       this.props.fetchBusinesses({ random: true });
     } else if (this.state.currentPathname === "/all") {
-      // All Restaurent feature
+      // All Restaurents feature
       // query businesses according to currentPage and limit
       this.props.fetchBusinesses({ limit: this.state.limit, page: this.state.currentPage });
+    } else if (this.state.currentPathname === "/search") {
+      // Search Restaurants feature
+      // query businesses match search string
+      this.props.fetchBusinesses({ 
+        search: this.state.search, 
+        limit: this.state.limit, 
+        page: this.state.currentPage 
+      });
     }
   }
 
