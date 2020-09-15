@@ -14,7 +14,7 @@ class BusinessSingleLeft extends React.Component {
       currentPage: 1,
       limit: 2
     }
-    this.queryBusinesses = this.queryBusinesses.bind(this);
+    this.queryBusiness = this.queryBusiness.bind(this);
     this.updateBusinessSingleLeftState = this.updateBusinessSingleLeftState.bind(this);
   }
 
@@ -40,12 +40,11 @@ class BusinessSingleLeft extends React.Component {
   }
 
   updateBusinessSingleLeftState(name, value) {
-    // query bisinesses when state changed
-    this.setState({ [name]: value }, () => this.queryBusinesses());
+    // query bisiness when state changed
+    this.setState({ [name]: value }, () => this.queryBusiness());
   }
 
-  queryBusinesses() {
-    // query businesses according to current path
+  queryBusiness() {
     this.props.fetchBusiness(
       this.props.businessId,
       { limit: this.state.limit, page: this.state.currentPage }
