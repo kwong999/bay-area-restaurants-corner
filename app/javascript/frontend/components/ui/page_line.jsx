@@ -39,14 +39,12 @@ class PageLine extends React.Component {
   render() {
     // page line will not display when there is only one page
     if (this.state.maxPage <= 1) return null;
-    console.log("PageLine State: ")
-    console.log(this.state.currentPage);
     return (
-      <>
+      <div id='page-line'>
         <button onClick={this.handleChangePage('prev')}>{'<'}</button>
         <p>{this.state.currentPage}/{this.state.maxPage}</p>
         <button onClick={this.handleChangePage('next')}>{'>'}</button>
-      </>
+      </div>
     )
   }
 }
