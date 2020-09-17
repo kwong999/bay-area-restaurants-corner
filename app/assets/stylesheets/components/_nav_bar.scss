@@ -1,0 +1,36 @@
+.nav-bar {
+  margin: auto;
+  padding-top: 20px;
+  font-size: calc(0.75em + 0.5vw);
+  font-family: $sans-serif;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+
+    > * {
+      margin-left: 20px;
+    }
+
+    > :last-child {
+      margin-right: 20px;
+    }
+
+    p {
+      padding: 6px;
+    }
+
+    button {
+      border-radius: 10px;
+      border: 1px solid black;
+      padding: 5px;
+      background: rgba(230, 230, 250, 0.7);
+    }
+
+    button:hover{
+      background: black;
+      color: white;
+    }
+  }
+}

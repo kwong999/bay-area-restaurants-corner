@@ -4,7 +4,6 @@ import Root from '../frontend/components/root';
 import configureStore from '../frontend/store/store';
 
 import { fetchBusinesses } from '../frontend/actions/business_actions'
-import { fetchSearchResult } from '../frontend/actions/search_actions'
 import { fetchUser } from '../frontend/actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
     window.getState = store.getState;
     window.fetchBusinesses = fetchBusinesses;
-    window.fetchSearchResult = fetchSearchResult;
     window.fetchUser = fetchUser;
   }
   //TEST END

@@ -3,6 +3,7 @@ import RenderRates from './rates';
 import RenderComments from './comments';
 import RenderVotes from './votes';
 import MiddleLine from '../ui/middle_line';
+import PageLine from '../ui/page_line';
 
 class ProfileTab extends React.Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class ProfileTab extends React.Component {
       currentPage: 1,
       limit: 5
     }
+    this.queryProfile = this.queryProfile.bind(this);
+    this.updateProfileTabState = this.updateProfileTabState.bind(this);
   }
 
   componentDidMount() {
@@ -23,56 +26,13 @@ class ProfileTab extends React.Component {
     }
   }
 
-  handleChangePage(type, num) {
-    let toPage;
-    switch (type) {
-      case 'prev':
-        toPage = this.state.currentPage - 1;
-        break;
-      case 'next':
-        toPage = this.state.currentPage + 1;
-        break;
-      case 'to':
-        toPage = num;
-        break;
-    }
-    return (e) => {
-      e.preventDefault();
-      this.setState({ currentPage: toPage }, () => (
-        this.determineFetch({ limit: this.state.limit, page: this.state.currentPage })
-      ));
-    }
+  updateProfileTabState(name, value) {
+    // query profile when state changed
+    this.setState({ [name]: value }, () => this.queryProfile());
   }
 
-  renderPageLine() {
-    const maxPage = Math.ceil(this.props.currentUser.count / this.state.limit);
-    if (maxPage <= 1) return null;
-    switch (this.state.currentPage) {
-      case 1:
-        return (
-          <>
-            <button id='hidden'>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button onClick={this.handleChangePage('next')}>{'>'}</button>
-          </>
-        )
-      case maxPage:
-        return (
-          <>
-            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button id='hidden'>{'>'}</button>
-          </>
-        )
-      default:
-        return (
-          <>
-            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button onClick={this.handleChangePage('next')}>{'>'}</button>
-          </>
-        )
-    }
+  queryProfile() {
+    this.determineFetch({ limit: this.state.limit, page: this.state.currentPage })
   }
 
   determineFetch({limit, page}) {
@@ -129,9 +89,12 @@ class ProfileTab extends React.Component {
                 <RenderRates rates={this.props.currentUser.rates} />
               </ul>
             </div>
-            <div id='page-line'>
-              {this.renderPageLine()}
-            </div>
+            <PageLine
+              updateParentState={this.updateProfileTabState}
+              currentPage={this.state.currentPage}
+              limit={this.state.limit}
+              totalItem={this.props.currentUser.count}
+            />
             <MiddleLine />
           </>
         )
@@ -145,9 +108,12 @@ class ProfileTab extends React.Component {
                 <RenderComments comments={this.props.currentUser.comments} />
               </ul>
             </div>
-            <div id='page-line'>
-              {this.renderPageLine()}
-            </div>
+            <PageLine
+              updateParentState={this.updateProfileTabState}
+              currentPage={this.state.currentPage}
+              limit={this.state.limit}
+              totalItem={this.props.currentUser.count}
+            />
             <MiddleLine />
           </>
         )
@@ -161,9 +127,12 @@ class ProfileTab extends React.Component {
                 <RenderVotes votes={this.props.currentUser.votes} />
               </ul>
             </div>
-            <div id='page-line'>
-              {this.renderPageLine()}
-            </div>
+            <PageLine
+              updateParentState={this.updateProfileTabState}
+              currentPage={this.state.currentPage}
+              limit={this.state.limit}
+              totalItem={this.props.currentUser.count}
+            />
             <MiddleLine />
           </>
         )

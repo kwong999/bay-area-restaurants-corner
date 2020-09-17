@@ -5,6 +5,7 @@ import BusinessOperatingHours from './business_operating_hours';
 import RatingSection from '../rate/rate_section';
 import UserComment from '../comment/user_comment';
 import CommentList from '../comment/comment_list';
+import PageLine from '../ui/page_line';
 
 class BusinessSingleLeft extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class BusinessSingleLeft extends React.Component {
       currentPage: 1,
       limit: 2
     }
+    this.queryBusiness = this.queryBusiness.bind(this);
+    this.updateBusinessSingleLeftState = this.updateBusinessSingleLeftState.bind(this);
   }
 
   componentDidMount() {
@@ -36,60 +39,16 @@ class BusinessSingleLeft extends React.Component {
     }
   }
 
-  handleChangePage(type, num) {
-    let toPage;
-    switch (type) {
-      case 'prev':
-        toPage = this.state.currentPage - 1;
-        break;
-      case 'next':
-        toPage = this.state.currentPage + 1;
-        break;
-      case 'to':
-        toPage = num;
-        break;
-    }
-    return (e) => {
-      e.preventDefault();
-      this.setState({ currentPage: toPage }, () => (
-        this.props.fetchBusiness(
-          this.props.businessId,
-          { limit: this.state.limit, page: this.state.currentPage }
-        )
-      ));
-    }
+  updateBusinessSingleLeftState(name, value) {
+    // query bisiness when state changed
+    this.setState({ [name]: value }, () => this.queryBusiness());
   }
 
-  renderPageLine() {
-    if (!this.props.comments[this.props.business.id]) return null;
-    const maxPage = Math.ceil(this.props.business.commentIds.length / this.state.limit);
-    if (maxPage <= 1) return null;
-    switch (this.state.currentPage) {
-      case 1:
-        return (
-          <>
-            <button id='hidden'>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button onClick={this.handleChangePage('next')}>{'>'}</button>
-          </>
-        )
-      case maxPage:
-        return (
-          <>
-            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button id='hidden'>{'>'}</button>
-          </>
-        )
-      default:
-        return (
-          <>
-            <button onClick={this.handleChangePage('prev')}>{'<'}</button>
-            <p>{this.state.currentPage}/{maxPage}</p>
-            <button onClick={this.handleChangePage('next')}>{'>'}</button>
-          </>
-        )
-    }
+  queryBusiness() {
+    this.props.fetchBusiness(
+      this.props.businessId,
+      { limit: this.state.limit, page: this.state.currentPage }
+    );
   }
 
   render() {
@@ -132,9 +91,12 @@ class BusinessSingleLeft extends React.Component {
         <ul className='business-comments'>
           {CommentList(comments[business.id], currentUserId, votes, business.id)}
         </ul>
-        <div id='page-line'>
-          {this.renderPageLine()}
-        </div>
+        <PageLine
+          updateParentState={this.updateBusinessSingleLeftState}
+          currentPage={this.state.currentPage}
+          limit={this.state.limit}
+          totalItem={this.props.business.commentIds.length}
+        />
       </div>
     )
   };
