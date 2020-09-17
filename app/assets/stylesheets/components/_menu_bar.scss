@@ -1,0 +1,33 @@
+.menu-bar {
+  background: rgb(255, 209, 191);
+  font-family: $sans-serif;
+
+  ul {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  li {
+    padding: 5px 10px;
+  }
+
+  li:hover {
+    background: lightsalmon;
+  }
+
+  input {
+    margin: 0 5px;
+    border-bottom: 1px solid black;
+  }
+
+  .active, .active:hover {
+    background:  rgb(59, 0, 0);
+    color:white;
+
+    input {
+    border-bottom: 1px solid white;
+  }
+  }
+}

@@ -1,28 +1,3 @@
-.business-main-nav-bar {
-  background: rgb(255, 209, 191);
-  font-family: $sans-serif;
-}
-
-.business-main-nav-bar ul {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-}
-
-.business-main-nav-bar li {
-  padding: 5px 10px;
-}
-
-.business-main-nav-bar li:hover {
-  background: lightsalmon;
-}
-
-.business-main-nav-bar .active, .business-main-nav-bar .active:hover {
-  background:  rgb(59, 0, 0);
-  color:white;
-}
-
 .business {
   margin: auto;
   display: flex;
