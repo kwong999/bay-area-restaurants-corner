@@ -19,30 +19,6 @@
   font-weight: bold;
 }
 
-.profile-nav-bar {
-  background: rgb(255, 209, 191);  
-  font-family: $sans-serif;
-}
-.profile-nav-bar ul {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-}
-
-.profile-nav-bar li {
-  padding: 5px 10px;
-}
-
-.profile-nav-bar li:hover {
-  background: lightsalmon;
-}
-
-.profile-nav-bar .active, .profile-nav-bar .active:hover {
-  background:  rgb(59, 0, 0);
-  color:white;
-}
-
 .profile-container h4 {
   font-family: $sans-serif;
   font-size: 18px;
