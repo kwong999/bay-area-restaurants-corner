@@ -35,7 +35,7 @@ class ProfileShow extends React.Component {
     const { userId } = this.props.match.params;
     return(
       <>
-        <nav className='profile-nav-bar'>
+        <nav className='menu-bar'>
           <ul>
             <li
               className={this.state.active === '/index' ? 'active' : ''}

@@ -30,7 +30,7 @@ class SearchBar extends React.Component{
       <li className={`search ${currentPathname === "/search" ? "active" : ""}`}>
         <form>
           <label>
-            {this.state.searchText}
+            <span>{this.state.searchText}</span>
             <input 
               type='text'
               onChange={this.handleChange}

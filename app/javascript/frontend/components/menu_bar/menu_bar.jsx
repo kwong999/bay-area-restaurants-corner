@@ -17,7 +17,7 @@ class MenuBar extends React.Component {
   render() {
     const { currentPathname } =  this.props;
     return (
-      <nav className='business-main-nav-bar'>
+      <nav className='menu-bar'>
         <ul>
           <li
             className={currentPathname === "/" ? "active" : ""}>
