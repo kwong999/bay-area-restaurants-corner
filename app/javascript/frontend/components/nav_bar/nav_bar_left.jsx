@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookies from 'universal-cookie';
 import Button from '../ui/button';
 import DarkModeButton from './dark_mode_button';
 
