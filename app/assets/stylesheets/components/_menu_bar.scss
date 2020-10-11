@@ -31,3 +31,23 @@
     }
   }
 }
+
+.dark-mode{
+  .menu-bar {
+    background: rgb(0, 0, 0);
+    color: white;
+
+    li:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    input {
+      border-bottom: 1px solid white;
+    }
+
+    .active, .active:hover {
+      background:  rgba(187, 134, 252, 1);
+      color: black;
+    }
+  }
+}
