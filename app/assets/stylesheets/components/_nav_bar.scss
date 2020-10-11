@@ -34,3 +34,17 @@
     }
   }
 }
+
+.dark-mode {
+  .nav-bar {
+    button {
+      background: rgb(0, 0, 0);
+      color: white;
+    }
+
+    button:hover{
+      background: rgb(50, 50, 50);
+      color: white;
+    }
+  }
+}
