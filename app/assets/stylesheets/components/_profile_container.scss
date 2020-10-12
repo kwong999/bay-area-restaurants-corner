@@ -1,47 +1,69 @@
-.profile-container > *:not(.loader) {
-  width: 80%;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  // margin-left: 20px;
-  // margin-right: 20px;
+.profile-container {
+  flex: 1;
+  
+  > *:not(.loader) {
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+  }
+
+  h3 {
+    width: 80%;
+    margin: auto;
+    font-family: $sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-family: $sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .list {
+    ul {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-family: $sans-serif;
+
+      li li {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+
+    a {
+      font-weight: bold;
+      color: rgb(0, 115, 187);
+    }
+
+    a:hover {
+      border-bottom: rgb(0, 115, 187) 1px solid;
+    }
+  }
+
+  .loader {
+    margin: 50px auto;
+  }
 }
 
-.profile-container .loader {
-  margin: 50px auto;
-}
+.dark-mode {
+  .profile-container {
+    background: rgb(0, 0, 0);
+    color: white;
 
-.profile-container > h3 {
-  width: 80%;
-  margin: auto;
-  font-family: $sans-serif;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.profile-container h4 {
-  font-family: $sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.profile-container .list ul {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-family: $sans-serif;
-}
-
-.profile-container .list li li {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.profile-container .list a {
-  font-weight: bold;
-  color: rgb(0, 115, 187);
-}
-
-.profile-container .list a:hover {
-  border-bottom: rgb(0, 115, 187) 1px solid;
+    a {
+      font-weight: bold;
+      color: rgba(187, 134, 252, 1);
+    }
+  
+    a:hover {
+      border-bottom: rgba(187, 134, 252, 1) 1px solid;
+    }
+  }
 }
