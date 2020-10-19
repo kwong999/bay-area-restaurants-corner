@@ -49,6 +49,9 @@
       }
   
       .business-short-detail {
+        padding: 5px;
+        border-radius: 5px;
+        
         > li {
           margin-top: 5px;
           margin-bottom: 5px;
@@ -95,7 +98,7 @@
   .business {
     background: rgb(0, 0, 0);
     color: white;
-
+    
     a {
       font-weight: bold;
       color: rgba(187, 134, 252, 1);
@@ -103,6 +106,10 @@
   
     a:hover {
       border-bottom: rgba(187, 134, 252, 1) 1px solid;
+    }
+
+    .business-short-detail {
+      background: rgba(255, 255, 255, 0.05);
     }
   }
 }
