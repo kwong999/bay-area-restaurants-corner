@@ -34,11 +34,11 @@
 
 .dark-mode{
   .menu-bar {
-    background: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
 
     li:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     input {
@@ -46,8 +46,8 @@
     }
 
     .active, .active:hover {
-      background:  rgba(187, 134, 252, 1);
-      color: black;
+      background: rgba(255, 255, 255, 0.2);
+      color: rgb(187, 134, 252);
     }
   }
 }
