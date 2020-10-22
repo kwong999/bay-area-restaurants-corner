@@ -26,14 +26,24 @@
 
   .list {
     ul {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
       font-size: 16px;
       font-family: $sans-serif;
 
-      li li {
+      ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      li {
+        padding: 5px;
+        border-radius: 5px;
         margin-top: 5px;
         margin-bottom: 5px;
+
+        li {
+          padding: 0px;
+        }
       }
     }
 
@@ -64,6 +74,18 @@
   
     a:hover {
       border-bottom: rgba(187, 134, 252, 1) 1px solid;
+    }
+    
+    .list {
+      ul {
+        li {
+          background: rgba(255, 255, 255, 0.05);
+
+          li {
+            background: rgba(255, 255, 255, 0);
+          }
+        }
+      }
     }
   }
 }
