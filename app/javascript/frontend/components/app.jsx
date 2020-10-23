@@ -1,4 +1,5 @@
 import React from 'react'
+import Cookies from 'universal-cookie';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -10,8 +11,11 @@ import MainContent from './main_content/main_content';
 
 class App extends React.Component {
   render() {
+    const cookies = new Cookies();
+    const darkMode = cookies.get('dark-mode') === "true";
+
     return (
-      <>
+      <div className={`app ${(darkMode) ? "dark-mode" : ""}`}>
         <Header />
         <Switch>
           <AuthRoute exact path='/login' component={LoginFormContainer} />
@@ -21,7 +25,7 @@ class App extends React.Component {
         </Switch>
         <footer>
         </footer>
-      </>
+      </div>
     )
   }
 }

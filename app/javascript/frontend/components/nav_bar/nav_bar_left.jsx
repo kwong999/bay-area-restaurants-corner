@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../ui/button';
+import DarkModeButton from './dark_mode_button';
 
 class NavBarLeft extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class NavBarLeft extends React.Component {
           text={"Home Page"}
           title={"Home Page"}
         />
+        <DarkModeButton />
       </div>
     )
   }

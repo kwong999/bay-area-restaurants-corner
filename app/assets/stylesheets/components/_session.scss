@@ -9,58 +9,81 @@
   border-radius: 10px;
   background: lightgrey;
   font-family: $serif;
+
+  button {
+    margin-bottom: 10px;
+    width: min-content;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
+  }
+
+  button:hover {
+    background: black;
+    color: white;
+  }
+
+  input {
+        margin-left: 5px;
+        padding: 2px;
+        border-bottom: 1px solid black;
+  }
+
+  .session-title, .session-errors, .session-form {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    text-align: left;
+  }
+  
+  .session-errors {
+    margin-bottom: 10px;
+    min-height: 0px;
+    color: red;
+  }
+
+  .session-form {
+    margin-top: 0px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: flex;
+      justify-content: left;
+      margin-bottom: 10px;
+
+      p {
+        text-align: left;
+        width: 90px;
+      }
+    }
+  }
 }
 
+.dark-mode {
+  .session {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    
+    button {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+    }
 
-.session-title, .session-errors, .session-form {
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 18px;
-  text-align: left;
-}
+    button:hover{
+      background: rgba(255, 255, 255, 0.4);
+      color: white;
+    }
 
-.session-errors {
-  height: 18px
-}
+    input {
+      border-bottom: 1px solid white;
+    }
 
-.session-errors {
-  color: red;
-}
-
-.session-form {
-  margin-top: 0px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.session-form > * {
-  margin-top: 10px;
-}
-
-.session-form > label {
-  display: flex;
-  justify-content: left;
-}
-.session-form > label > p {
-  text-align: left;
-  width: 90px;
-}
-.session-form > label > input {
-  margin-left: 5px;
-  padding: 2px;
-  border-bottom: 1px solid black;
-}
-
-.session-form > :last-child {
-  margin-bottom: 10px;
-  width: min-content;
-  border-radius: 10px;
-  border: 1px solid black;
-  padding: 5px;
-}
-
-.session-form > button:hover{
-  background: black;
-  color: white;
+    .session-errors {
+      color: rgb(207, 102, 121);
+    }
+  }
 }
