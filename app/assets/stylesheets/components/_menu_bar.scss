@@ -32,6 +32,15 @@
   }
 }
 
+@media (max-width: 850px) {
+  .menu-bar {
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
 .dark-mode{
   .menu-bar {
     background: rgba(255, 255, 255, 0.05);
