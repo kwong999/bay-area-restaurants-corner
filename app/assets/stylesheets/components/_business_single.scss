@@ -121,11 +121,19 @@
   .business-single {
     margin: auto;
     display: block;
-  }
-  .business-single-left,
-  .business-single-right {
-    width: 80%;
-    margin: auto;
+
+    .business-single-left,
+    .business-single-right {
+      width: 80%;
+      margin: auto;
+    }
+
+    .current-user-rate-comment {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
   }
 }
 
