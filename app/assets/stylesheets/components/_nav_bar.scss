@@ -35,6 +35,30 @@
   }
 }
 
+@media (max-width: 850px) {
+  .nav-bar {
+      display: flex;
+      flex-direction: column;
+      
+      > * {
+        margin-top: 10px;
+      }
+  }
+}
+
+@media (max-width: 450px) {
+  .nav-bar {
+      div {
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+        > * {
+          margin: 5px 20px;
+        }
+      }
+  }
+}
+
 .dark-mode {
   .nav-bar {
     color: white;
